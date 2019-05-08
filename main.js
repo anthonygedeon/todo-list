@@ -10,10 +10,4 @@ submit.addEventListener("click", () => {
     input.value = "";
 });
 
-remove.addEventListener("click", () => {
-    let li = document.createElement("li");
-    li.innerHTML = "<button>delete</button>"
-    let ul = document.getElementsByTagName("ul")[0];
-    ul.removeChild(li);
-});
 
