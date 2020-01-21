@@ -12,9 +12,83 @@
 
     <body>
         
-        <h1>Hello</h1>
+        <header class="header">
+            <h1 class="header__app-name">Trakk'em</h1>
+        </header>
+
+        <main class="todo">
+            
+            <header class="todo__header">
+                <nav class="nav">
+                    <h2 class="nav__app-name">Todo-list</h2>
+                    <img class="nav__profile" src="" alt="Profile image">
+                </nav>
+            </header>
+
+            <section class="info">
+                <h3 class="info__total">Total:<span data-total-tasks>3</span></h3>
+                <h3 class="info__success">Success:<span data-total-success>0</span></h3>
+                <h3 class="info__pending">Pending:<span data-total-pending>3</span></h3>
+            </section>
+
+            <div class="input">
+                <input class="input__task" type="text" placeholder="Enter Task...">
+                <!-- arrow svg -->
+            </div>
+
+            <section class="task-container">
+                
+                <div class="task-card">
+                    <h4 class="task-card__name">Standup meeting with the team @5pm</h4>
+                    <div class="priority">
+                        <div class="priority__circle"></div>
+                        <h4 class="priority__type">Low Priority</h4>
+                    </div>
+                    <!-- tag Svg -->
+                    <p class="task-card__timestamp"><time datetime="2017-04-29T19:00">July 10</time></p class="task-card__timestamp">
+                    <input class="task-card__check" type="checkbox">
+                    <!-- svg trash -->
+                </div>
+                
+                <div class="task-card">
+                    <h4>Order pizza for Granny tonight</h4>
+                    <div class="priority">
+                        <div class="priority__circle"></div>
+                        <h4 class="priority__type">High Priority</h4>
+                    </div>
+                    <!-- tag Svg -->
+                    <p class="task-card__timestamp"><time datetime="2017-04-29T19:00">July 10</time></p>
+                    <input class="task-card__check" type="checkbox" >
+                    <!-- svg trash -->
+                </div>
+                
+                <div class="task-card">
+                    <h4>Design, Develop, and Deploy Apps to Netlify for Clients</h4>
+                    <div class="priority">
+                        <div class="priority__circle"></div>
+                        <h4 class="priority__type">Medium Priority</h4>
+                    </div>
+                    <!-- tag Svg -->
+                    <p class="task-card__timestamp"><time datetime="2017-04-29T19:00">July 10</time></p>
+                    <input class="task-card__check" type="checkbox">
+                    <!-- svg trash -->
+                </div>
+
+            </section>
+            
+            <footer>
+                <h5>Clear All
+                    <span>
+                        <!-- Trash can svg -->
+                    </span>
+                </h5>
+            </footer>
+        </main>
+
+
 
         <!-- Scripts -->
         <script src="main.js"></script>
     </body>
 </html>
+
