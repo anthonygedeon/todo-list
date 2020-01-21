@@ -1,1 +1,5 @@
+# Ignore every directory and files in node_modules
 node_modules
+
+# Ignore every design picture
+assets/design
