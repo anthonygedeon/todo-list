@@ -1,3 +1,5 @@
-body,html {
-    background-color: #000;
+html, 
+body {
+    background-image: linear-gradient(87deg, var(--lightblue-accent) 0, var(--blue-accent) 100%);
+    font-family: var(--main-font);
 }
