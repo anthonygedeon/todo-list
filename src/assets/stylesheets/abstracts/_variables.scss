@@ -2,53 +2,52 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-
-
-
-
 /// Regular font family
 /// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Open Sans', sans-serif !default;
 
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
-
-
-
-
-
-/// Copy text color
+/// Main color accent
 /// @type Color
-$text-color: rgb(34, 34, 34) !default;
+$white: #fff !default;
 
-/// Main brand color
+/// accent color
 /// @type Color
-$brand-color: rgb(229, 0, 80) !default;
+$tiffany: #11cdef !default;
+$blue: #1171ef !default;
+$purple-blue: #5e72e4 !default;
+$close-btn: #f4f5f7 !default;
 
-/// Light grey
+/// Badge Color
 /// @type Color
-$light-grey: rgb(237, 237, 237) !default;
+$total: rgba(203,210,246,.5) !default;
+$success: rgba(147,231,195,.5) !default;
+$pending: rgba(254,201,189,.5) !default;
 
-/// Medium grey
+/// Tag colors options
 /// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
-
-
-
-
+$grassGreen: rgb(0, 200, 33) !default;
+$lime: rgb(156, 211, 38) !default;
+$uglyGreen: rgb(202, 182, 65) !default;
+$yellow: rgb(255, 203, 0) !default;
+$purple: rgb(120, 75, 209) !default;
+$lighterPurple: rgb(162, 93, 220) !default;
+$sonicBlue: rgb(0, 134, 192) !default;
+$waterBlue: rgb(87, 155, 252) !default;
+$skyBlue: rgb(102, 204, 255) !default;
+$darkRed: rgb(187, 51, 84) !default;
+$red: rgb(226, 68, 92) !default;
+$darkerPink: rgb(255, 21, 138) !default;
+$pink: rgb(255, 90, 196) !default;
+$brightOrange: rgb(255, 100, 46) !default;
+$orange: rgb(253, 171, 61) !default;
+$brown: rgb(127, 83, 71) !default;
+$lightGray: rgb(196, 196, 196) !default;
+$gray: rgb(128, 128, 128) !default;
+$dark: rgb(51, 51, 51) !default;
 
 /// Container's maximum width
 /// @type Length
 $max-width: 1180px !default;
-
-
-
-
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
@@ -58,11 +57,6 @@ $breakpoints: (
   'medium': 768px,
   'large': 1024px,
 ) !default;
-
-
-
-
-
 
 /// Relative or absolute URL where all assets are served from
 /// @type String

@@ -1,2 +1,2 @@
 import html from '../dist/index.html';
-import './assets/stylesheets/main.scss';
+import './assets/stylesheets/index.scss';

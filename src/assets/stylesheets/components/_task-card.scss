@@ -1,0 +1,41 @@
+.task-container {
+    margin: 1rem 0;
+}
+
+.task-card {
+    display: flex;
+    align-items: center;
+    
+    &__name {
+        flex: 1 0;
+    }
+
+    &__name {
+        font-size: 1rem;
+        font-weight: 400;
+        color: darken($white, 30%);
+    }
+
+    &:hover {
+        background-color: darken($white, 3%);
+    }
+}
+
+.priority {
+    margin-right: 4rem;
+
+    &__type {
+        font-weight: 400;
+        font-size: 1rem;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 0.7rem;
+            height: 0.7rem;
+            border-radius: 50%;
+            background-color: $lightGray;
+            margin-right: 0.6rem;
+        }
+    }
+}

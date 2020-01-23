@@ -2,6 +2,12 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /// Event wrapper
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector

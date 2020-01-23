@@ -1,0 +1,14 @@
+.todo {
+    
+    &__header {
+        width: 100%;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        margin: 0 0 1rem 0;
+    }
+}

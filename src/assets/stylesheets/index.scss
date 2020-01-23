@@ -21,11 +21,12 @@
 @import
   'layout/todo-list-header',
   'layout/main',
-  'layout/todo-list-footer',
-  'layout/todo-list';
+  'layout/todo-list-footer';
 
 // 5. Components
 @import
+  'components/add-task',
+  'components/todo-nav',
   'components/todo-progress',
   'components/close-button',
   'components/save-button',
@@ -38,7 +39,6 @@
   'components/tag-modal',
   'components/task-card';
 
-
 // 6. Page-specific styles
 @import
   'pages/home';
@@ -46,3 +46,5 @@
 // 7. Themes
 @import
   'themes/default';
+
+  
