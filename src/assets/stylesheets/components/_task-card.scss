@@ -3,17 +3,18 @@
 }
 
 .task-card {
-    display: flex;
-    align-items: center;
-    
-    &__name {
-        flex: 1 0;
-    }
+    cursor: pointer;
+    @include flex-between;
 
     &__name {
+        flex: 1;
         font-size: 1rem;
         font-weight: 400;
         color: darken($white, 30%);
+    }
+
+    &__info {
+        @include flex-between;
     }
 
     &:hover {
@@ -38,4 +39,8 @@
             margin-right: 0.6rem;
         }
     }
+}
+
+.extra-info {
+    @include flex-between;
 }
