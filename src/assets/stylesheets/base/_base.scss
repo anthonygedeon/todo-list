@@ -13,6 +13,10 @@ body {
   background-image: linear-gradient(100deg, $tiffany, $blue);
   max-width: 90%;
   margin: 0 auto;
+
+  @include respond-to('x-large') {
+	max-width: 50%;
+  }
 }
 
 main {
@@ -54,16 +58,19 @@ time {
   color: darken($white, 60%);
 }
 
+svg {
+  width: 1.2rem;
+}
+
 input[type="text"] {
   width: 100%;
   border: none;
-  padding-left: 1rem;
   outline: none;
   background-color: transparent;
   
   &::placeholder {
-    font-size: 1rem;
-    color: darken($white, 30%);
+	font-size: 1rem;
+	color: darken($white, 30%);
   }
 }
 
@@ -86,6 +93,6 @@ a {
   text-decoration: none;
 
   @include on-event {
-    text-decoration: underline;
+	text-decoration: underline;
   }
 }

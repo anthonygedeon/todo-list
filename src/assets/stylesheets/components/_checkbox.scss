@@ -1,0 +1,31 @@
+.checkboxes {
+    &__input {
+        display: none;
+    }
+
+    &__box {
+        width: 1em;
+        height: 1em;
+        border: 2px solid $tiffany;
+        border-radius: 3px;
+        @include flex-between(center);
+        flex-shrink: 0;
+        margin-right: 10px;
+        transition: background 0.15s, border-color 0.15s;
+        
+        &::after {
+            content: '\2714';
+            color: $white;
+            transform: scale(0);
+        }
+    }
+}
+
+.checkboxes__input:checked + .checkboxes__box {
+    background: $tiffany;
+    transition: transform 0.15s;
+
+    &::after {
+        transform: scale(1);
+    }
+}

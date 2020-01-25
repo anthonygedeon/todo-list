@@ -2,10 +2,38 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
-@mixin flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/// position horizontally
+/// @author Anthony Gedeon
+/// @param {String} $justify-content [space-between] - Include one of the justify-content values
+/// @param {Bool} $self [false] - Whether or not programmer wants to see available values for justify-content
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin flex-between($justify-content: space-between, $self: false) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: center;
+
+    @if $self {
+      @warn "Values for justify-content are: flex-start, flex-end, space-between, space-around, space-evenly...";
+    }
+}
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
 }
 
 /// Event wrapper

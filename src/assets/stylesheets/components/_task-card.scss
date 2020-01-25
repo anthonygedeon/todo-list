@@ -4,10 +4,10 @@
 
 .task-card {
     cursor: pointer;
-    @include flex-between;
+    display: grid;
+    grid-template-columns: 60% 1fr;
 
     &__name {
-        flex: 1;
         font-size: 1rem;
         font-weight: 400;
         color: darken($white, 30%);
@@ -23,7 +23,6 @@
 }
 
 .priority {
-    margin-right: 4rem;
 
     &__type {
         font-weight: 400;
@@ -43,4 +42,17 @@
 
 .extra-info {
     @include flex-between;
+
+    > svg {
+        margin-right: 1rem;
+    }
+}
+
+.options {
+    @include flex-between;
+
+    &__trash {
+        stroke: $tiffany;
+    }
+
 }

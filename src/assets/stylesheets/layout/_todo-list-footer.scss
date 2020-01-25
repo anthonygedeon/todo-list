@@ -1,3 +1,17 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
+.footer {
+    color:  $tiffany;
+    
+    &__heading {
+        @include flex-between(flex-start);
+        font-weight: 400;
+        cursor: pointer;
+        
+        span svg {
+            stroke: $tiffany;
+            margin-left: 1rem;
+        }
+    }
+}
