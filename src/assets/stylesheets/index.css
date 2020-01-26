@@ -723,28 +723,70 @@ body {
   color: rgba(185, 36, 3, 0.5);
 }
 
+.input-label__checkbox {
+  opacity: 0;
+}
+
+.input-label__box {
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  margin-right: 1rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid #11cdef;
+}
+
+.input-label__box::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  height: 0;
+  width: 0;
+  border-radius: 5px;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(0deg) scale(0);
+          transform: rotate(0deg) scale(0);
+  opacity: 1;
+}
+
+.input-label__checkbox:checked ~ .input-label__box {
+  background-color: #fff;
+  border-radius: 5px;
+  -webkit-transform: rotate(0deg) scale(1);
+          transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+.input-label__checkbox:checked ~ .input-label__box::after {
+  -webkit-transform: rotate(45deg) scale(1);
+          transform: rotate(45deg) scale(1);
+  opacity: 1;
+  left: 5px;
+  top: 0px;
+  width: 6px;
+  height: 12px;
+  border: solid #009bff;
+  border-width: 0 2px 2px 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
 .task-container {
   margin: 1rem 0;
 }
 
 .task-card {
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60% 1fr;
+      grid-template-columns: 60% 1fr;
 }
 
 .task-card__name {
-  max-width: 40%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0;
-          flex: 1 0;
   font-size: 1rem;
   font-weight: 400;
   color: #b3b3b3;
@@ -764,10 +806,6 @@ body {
 
 .task-card:hover {
   background-color: #f7f7f7;
-}
-
-.priority {
-  margin-right: 4rem;
 }
 
 .priority__type {
@@ -795,6 +833,25 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 60%;
+}
+
+.extra-info > svg {
+  margin-right: 1rem;
+}
+
+.options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.options__trash {
+  stroke: #11cdef;
 }
 /*# sourceMappingURL=index.css.map */
