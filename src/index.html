@@ -6,6 +6,45 @@
         <title>TooDoo</title>
     </head>
         <body>
+
+            <div class="container">
+                <header class="current">
+                    <h2 class="current__action">Today</h2>
+                    <p class="current__date">Apr 1st 2020</p>
+                </header>
+
+                <main class="todos">
+                    <section class="task">
+                        <h3 class="task__category">Work</h3>
+                        <div class="task__todo">
+                            <input type="checkbox" class="todo__checkbox">
+                            <p class="task__name" data-set-time="4:00">Finish quarter report</p>
+                        </div>  
+                        <div class="task__todo">
+                            <input type="checkbox" class="todo__checkbox">
+                            <p class="task__name">Start brainstorming new project</p> <!-- need character limit -->
+                        </div>  
+                    </section>
+
+                    <section class="task">
+                        <h3 class="task__category">School</h3>
+                        <div class="task__todo">
+                            <input type="checkbox" class="todo__checkbox">
+                            <p class="task__name" data-set-time="8:30">Pair programming with Chris</p>
+                        </div>  
+                        <div class="task__todo">
+                            <input type="checkbox" class="todo__checkbox">
+                            <p class="task__name">Write thesis proposal</p> <!-- need character limit -->
+                            
+                        </div>  
+                        <div class="task__todo">
+                            <input type="checkbox" class="todo__checkbox">
+                            <p class="task__name">Sign up for office hour with prof...</p> <!-- need character limit -->
+                        </div>  
+                    </section>
+                </main>
+
+            </div>
             
             <script src="index.js"></script>
         </body>
