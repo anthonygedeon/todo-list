@@ -4,46 +4,12 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Open Sans', sans-serif !default;
+$text-font-stack: 'Roboto', sans-serif !default;
 
 /// Main color accent
 /// @type Color
 $white: #fff !default;
 
-/// accent color
-/// @type Color
-$tiffany: #11cdef !default;
-$blue: #1171ef !default;
-$purple-blue: #5e72e4 !default;
-$close-btn: #f4f5f7 !default;
-
-/// Badge Color
-/// @type Color
-$total: rgba(203,210,246,.5) !default;
-$success: rgba(147,231,195,.5) !default;
-$pending: rgba(254,201,189,.5) !default;
-
-/// Tag colors options
-/// @type Color
-$grassGreen: rgb(0, 200, 33) !default;
-$lime: rgb(156, 211, 38) !default;
-$uglyGreen: rgb(202, 182, 65) !default;
-$yellow: rgb(255, 203, 0) !default;
-$purple: rgb(120, 75, 209) !default;
-$lighterPurple: rgb(162, 93, 220) !default;
-$sonicBlue: rgb(0, 134, 192) !default;
-$waterBlue: rgb(87, 155, 252) !default;
-$skyBlue: rgb(102, 204, 255) !default;
-$darkRed: rgb(187, 51, 84) !default;
-$red: rgb(226, 68, 92) !default;
-$darkerPink: rgb(255, 21, 138) !default;
-$pink: rgb(255, 90, 196) !default;
-$brightOrange: rgb(255, 100, 46) !default;
-$orange: rgb(253, 171, 61) !default;
-$brown: rgb(127, 83, 71) !default;
-$lightGray: rgb(196, 196, 196) !default;
-$gray: rgb(128, 128, 128) !default;
-$dark: rgb(51, 51, 51) !default;
 
 /// Container's maximum width
 /// @type Length

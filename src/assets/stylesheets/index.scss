@@ -20,24 +20,11 @@
 // 4. Layout-related sections
 @import
   'layout/todo-list-header',
-  'layout/main',
-  'layout/todo-list-footer';
+  'layout/main';
 
 // 5. Components
-@import
-  'components/add-task',
-  'components/todo-nav',
-  'components/todo-progress',
-  'components/close-button',
-  'components/save-button',
-  'components/priority-details-popup',
-  'components/tag-details-popup',
-  'components/tag-color-picker',
-  'components/checkbox',
-  'components/radio-button',
-  'components/task-details-modal',
-  'components/tag-modal',
-  'components/task-card';
+//@import
+  
 
 // 6. Page-specific styles
 @import
