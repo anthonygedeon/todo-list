@@ -12,5 +12,8 @@
 .toolbar {
     order: 0;
     height: 100vh;
-    background-color: $sidebar-background-color
+    background-color: $sidebar-background-color;
+
+    position: sticky;
+    top: 0;
 }

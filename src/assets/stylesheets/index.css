@@ -512,5 +512,129 @@ body {
           order: 0;
   height: 100vh;
   background-color: #f5f5f5;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.toolbar {
+  margin-right: 2rem;
+  padding-top: 8rem;
+}
+
+.toolbar__search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toolbar__input {
+  height: 4rem;
+  border: none;
+  border-bottom: 2px solid #dddddd;
+  background-color: transparent;
+  padding-left: 3rem;
+}
+
+.toolbar__input::-webkit-input-placeholder {
+  font-size: 2rem;
+  color: #e5e5e5;
+  font-weight: 400;
+}
+
+.toolbar__input:-ms-input-placeholder {
+  font-size: 2rem;
+  color: #e5e5e5;
+  font-weight: 400;
+}
+
+.toolbar__input::-ms-input-placeholder {
+  font-size: 2rem;
+  color: #e5e5e5;
+  font-weight: 400;
+}
+
+.toolbar__input::placeholder {
+  font-size: 2rem;
+  color: #e5e5e5;
+  font-weight: 400;
+}
+
+.toolbar__category-text {
+  padding: 1em 0;
+}
+
+.toolbar__category-text:hover {
+  background-color: #ededed;
+}
+
+.toolbar__task-categories, .toolbar__lists {
+  cursor: pointer;
+  padding: 1rem;
+  margin: 1rem 3rem;
+}
+
+.toolbar__add-task {
+  margin-right: 0.7rem;
+  width: 18px;
+  height: 18px;
+}
+
+.toolbar__list-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toolbar__list-text::before {
+  content: '';
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #cc5c61;
+  width: 10px;
+  height: 10px;
+  margin-right: 1rem;
+}
+
+.toolbar__search-icon {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  stroke-width: 1;
+}
+
+.toolbar__create-list {
+  font-size: 1rem;
+}
+
+.toolbar__create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #9f9f9f;
+}
+
+.toolbar__menu {
+  margin-left: 3rem;
+  margin-top: 7rem;
+  cursor: pointer;
+}
+
+.toolbar__list-indicator {
+  border-bottom: 1px solid #9f9f9f;
+  margin-left: 3rem;
+  color: #9f9f9f;
+  font-size: 1rem;
 }
 /*# sourceMappingURL=index.css.map */
