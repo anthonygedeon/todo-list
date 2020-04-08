@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.todos {
+    order: 10;
+}
+
+.toolbar {
+    order: 0
+}

@@ -10,25 +10,26 @@
     </head>
 	<body>
 		<div class="container">
-			<header class="current">
-				<h2 class="current__action">Today</h2>
-				<p class="current__date">Apr 1st 2020</p>
-				<svg
-                    class="toolbar__add-task"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<line class="toolbar__add-task--1-line" x1="12" y1="5" x2="12" y2="19"></line>
-					<line class="toolbar__add-task--2-line" x1="5" y1="12" x2="19" y2="12"></line>
-			</header>
-
+			
 			<main class="todos">
+				<header class="current">
+					<h2 class="current__action">Today</h2>
+					<p class="current__date">Apr 1st 2020</p>
+					<svg
+						class="current__add-task"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<line class="toolbar__add-task--1-line" x1="12" y1="5" x2="12" y2="19"></line>
+						<line class="toolbar__add-task--2-line" x1="5" y1="12" x2="19" y2="12"></line>
+				</header>
+
 				<section class="task">
 					<h3 class="task__category">Work</h3>
 					<div class="task__todo">
@@ -97,6 +98,42 @@
 			</main>
 
 			<div class="toolbar">
+
+				<div class="toolbar__search">
+					<input type="text" placeholder="Search">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+						<circle cx="11" cy="11" r="8"></circle>
+						<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+					</svg>
+				</div>
+
+				<div class="toolbar__task-categories">
+					<p class="toolbar__category-text">Today</p>
+					<p class="toolbar__category-text">All</p>
+					<p class="toolbar__category-text">Schedule</p>
+				</div>
+
+				<div class="toolbar__lists">
+					<p class="toolbar__list-text">Work</p>
+					<p class="toolbar__list-text">School</p>
+					<p class="toolbar__list-text">Home</p>
+					<p class="toolbar__list-text">Misc.</p>
+					<svg
+                    class="toolbar__add-task"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line class="toolbar__add-task--1-line" x1="12" y1="5" x2="12" y2="19"></line>
+					<line class="toolbar__add-task--2-line" x1="5" y1="12" x2="19" y2="12"></line>
+				<p class="toolbar__create-list">New List</p>
+				</div>
+
 				<svg
 					class="toolbar__menu"
 					width="24"
@@ -113,7 +150,6 @@
 					<line class="toolbar__menu--1-line" x1="3" y1="18" x2="21" y2="18"></line>
 				</svg>
 
-				
 				</svg>
 			</div>
 		</div>

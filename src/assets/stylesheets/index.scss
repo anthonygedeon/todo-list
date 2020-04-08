@@ -19,11 +19,10 @@
 
 // 4. Layout-related sections
 @import
-  'layout/todo-list-header',
   'layout/main';
 
 // 5. Components
-//@import
+@import 'components/sidebar';
   
 
 // 6. Page-specific styles
