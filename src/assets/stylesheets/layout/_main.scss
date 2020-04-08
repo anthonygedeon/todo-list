@@ -1,12 +1,16 @@
 .container {
     display: flex;
     justify-content: flex-start;
+    position: relative;
 }
 
 .todos {
     order: 10;
+    background-color: $white;
 }
 
 .toolbar {
-    order: 0
+    order: 0;
+    height: 100vh;
+    background-color: $sidebar-background-color
 }
