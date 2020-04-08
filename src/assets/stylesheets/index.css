@@ -504,6 +504,10 @@ body {
       -ms-flex-order: 10;
           order: 10;
   background-color: #fff;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  margin-right: 4rem;
 }
 
 .toolbar {
@@ -515,6 +519,63 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+.current {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3rem;
+}
+
+.current__action {
+  font-size: 5rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.current__date {
+  margin-top: 0.1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.task {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.task__category {
+  font-size: 1rem;
+  color: #9f9f9f;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.task__todo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.task__name {
+  margin: 0.76rem 0;
+}
+
+.todo__checkbox {
+  margin-right: 1rem;
 }
 
 .toolbar {

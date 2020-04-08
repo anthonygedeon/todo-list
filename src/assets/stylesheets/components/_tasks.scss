@@ -1,0 +1,50 @@
+.current {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+
+    &__action {
+        font-size: 5rem;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+
+    &__date {
+        margin-top: 0.1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+
+}
+
+.task {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+
+    &__category {
+        font-size: 1rem;
+        color: #9f9f9f;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    &__todo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        
+    }
+
+    &__name {
+        margin: 0.76rem 0
+    }
+
+    
+}
+
+.todo__checkbox {
+    margin-right: 1rem;
+}

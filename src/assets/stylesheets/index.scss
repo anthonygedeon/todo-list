@@ -22,7 +22,9 @@
   'layout/main';
 
 // 5. Components
-@import 'components/sidebar';
+@import 
+'components/tasks',
+'components/sidebar';
   
 
 // 6. Page-specific styles
@@ -33,4 +35,4 @@
 @import
   'themes/default';
 
-  
+  // 
