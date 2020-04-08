@@ -538,6 +538,7 @@ body {
   font-size: 5rem;
   margin-bottom: 0;
   font-weight: 500;
+  margin-top: 0;
 }
 
 .current__date {
@@ -552,7 +553,7 @@ body {
 }
 
 .task__category {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #9f9f9f;
   font-weight: 400;
   margin-bottom: 0;
@@ -572,6 +573,13 @@ body {
 
 .task__name {
   margin: 0.76rem 0;
+}
+
+.task__date-separator {
+  background-color: #f9f9f9;
+  font-weight: 400;
+  padding: 0.9rem 1rem;
+  font-size: 1.6rem;
 }
 
 .todo__checkbox {
