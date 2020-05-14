@@ -1,166 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>TooDoo</title>
-        
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./assets/stylesheets/index.css">
-    </head>
-	<body>
-		<div class="container">
-			
-			<main class="todos">
-				<header class="current">
-					<div class="current__task-for-today">
-						<h2 class="current__action">Today</h2>
-						<p class="current__date">Apr 1st 2020</p>
-					</div>
-					<svg
-						class="current__add-task"
-						width="34"
-						height="34"
-						viewBox="0 0 20 20"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1"
-						stroke-linecap="square"
-						stroke-linejoin="square"
-					>
-						<line class="toolbar__add-task--1-line" x1="12" y1="5" x2="12" y2="19"></line>
-						<line class="toolbar__add-task--2-line" x1="5" y1="12" x2="19" y2="12"></line>
-				</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todo list</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/stylesheets/main.css" />
+  </head>
 
-				<section class="task">
-					<h3 class="task__category">Work</h3>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name" data-set-time="4:00">
-							Finish quarter report
-						</p>
-					</div>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name">
-							Start brainstorming new project
-						</p>
-						<!-- need character limit -->
-					</div>
-				</section>
+  <body>
+    <h1 class="title">Stuff I need to do</h1>
 
-				<section class="task">
-					<h3 class="task__category">School</h3>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name" data-set-time="8:30">
-							Pair programming with Chris
-						</p>
-					</div>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name">Write thesis proposal</p>
-						<!-- need character limit -->
-					</div>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name">
-							Sign up for office hour with prof...
-						</p>
-						<!-- need character limit -->
-					</div>
-				</section>
+    <div class="all-tasks">
+      <h2 class="task-list-title">My lists</h2>
+      <ul class="task-list">
+        <li class="list-name active-list">Youtube</li>
+        <li class="list-name">Work</li>
+        <li class="list-name">Grocery</li>
+      </ul>
 
-				<h2 class="task__date-separator">Tomorrow</h2>
+      <form action="">
+        <input 
+          type="text"
+          class="new list"
+          placeholder="new list name"
+          aria-label="new list name"
+        />
+        <button class="btn create" aria-label="create new list">+</button>
+      </form>
+    </div>
 
-				<section class="task">
-					<h3 class="task__category">Work</h3>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name" data-set-time="10:00 AM">
-							Meet with HR
-						</p>
-					</div>
-				</section>
+    <div class="todo-list">
+      <div class="todo-header">
+        <h2 class="list-title">YouTube</h2>
+        <p class="task-count">3 tasks remaining</p>
+      </div>
 
-				<section class="task">
-					<h3 class="task__category">Home</h3>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name" data-set-time="8:30">
-							Pick up succulents from Liz
-						</p>
-					</div>
-					<div class="task__todo">
-						<input type="checkbox" class="todo__checkbox" />
-						<p class="task__name">Laundry</p>
-						<!-- need character limit -->
-					</div>
-				</section>
-			</main>
+      <div class="todo-body">
+        <div class="tasks">
+          <div class="task">
+            <input 
+              type="checkbox"
+              id="task-1"
+            />
+            <label for="task-1">
+              <span class="custom-checkbox"></span>
+              record todo list video
+            </label>
+          </div>
+          <!-- /task-1 -->
 
-			<div class="toolbar">
+          <div class="task">
+              <input 
+                type="checkbox"
+                id="task-2"
+              />
+              <label for="task-2">
+                <span class="custom-checkbox"></span>
+                another task
+              </label>
+            </div>
+            <!-- /task-2 -->
 
-				<div class="toolbar__search">
-					<input class="toolbar__input" type="text" placeholder="Search">
-					<svg class="toolbar__search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
-						<circle cx="11" cy="11" r="8"></circle>
-						<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-					</svg>
-				</div>
+            <div class="task">
+                <input 
+                  type="checkbox"
+                  id="task-3"
+                />
+                <label for="task-3">
+                  <span class="custom-checkbox"></span>
+                  a third task
+                </label>
+              </div>
+              <!-- /task-3 -->
+        </div>
 
-				<div class="toolbar__task-categories">
-					<p class="toolbar__category-text">Today</p>
-					<p class="toolbar__category-text">All</p>
-					<p class="toolbar__category-text">Schedule</p>
-				</div>
+        <div class="new-task-creator">
+            <form action="">
+                <input 
+                  type="text"
+                  class="new task"
+                  placeholder="new task name"
+                  aria-label="new task name"
+                />
+                <button class="btn create" aria-label="create new task">+</button>
+              </form>
+        </div>
 
-				<h3 class="toolbar__list-indicator">List</h3>
+        <div class="delete-stuff">
+          <button class="btn delete">Clear completed tasks</button>
+          <button class="btn delete">Delete list</button>
+        </div>
+      </div>
+    </div>
 
-				<div class="toolbar__lists">
-					<p class="toolbar__list-text">Work</p>
-					<p class="toolbar__list-text">School</p>
-					<p class="toolbar__list-text">Home</p>
-					<p class="toolbar__list-text">Misc.</p>
-					<div class="toolbar__create">
-						<svg
-						class="toolbar__add-task"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<line class="toolbar__add-task--1-line" x1="12" y1="5" x2="12" y2="19"></line>
-						<line class="toolbar__add-task--2-line" x1="5" y1="12" x2="19" y2="12"></line>
-					<p class="toolbar__create-list">New List</p>
-					</div>
-					
-				</div>
-
-				<svg
-					class="toolbar__menu"
-					width="34"
-					height="34"
-					viewBox="0 0 28 28"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<line class="toolbar__menu--1-line" x1="3" y1="6" x2="21" y2="6"></line>
-					<line class="toolbar__menu--2-line" x1="3" y1="12" x2="13" y2="12"></line>
-					<line class="toolbar__menu--3-line" x1="3" y1="18" x2="21" y2="18"></line>
-				</svg>
-
-				</svg>
-			</div>
-		</div>
-
-		<script src="index.js"></script>
-	</body>
+   
+    </div>
+  </body>
 </html>
