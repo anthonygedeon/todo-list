@@ -1,0 +1,25 @@
+/*-----------------------------------------------------------
+VARIABLES
+-----------------------------------------------------------*/
+:root {
+    --primary-color: hsl(0, 0%, 100%);
+    --accent-color: hsl(244,100,71);
+
+    --main-content-bg: hsl(225,6,12);
+    --sidebar-bg: hsl(240,7,10);
+    --account-bg: hsl(0,0,100);
+
+    --inactive-text: hsl(0,0,54);
+    --input-text: hsl(210,5,52);
+
+    --todo-status-pause: hsl(47,81,61);
+    --todo-status-play: hsl(244,100,71);
+    --todo-status-done: hsl(151,85,43);
+
+    --modal-heading: hsl(0,0,7);
+    --modal-subheading: hsl(0,0,17);
+
+    --primary-font: 'Inter', sans-serif;
+    --font-bold: 700;
+    --font-regular: 400;
+}
