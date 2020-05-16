@@ -30,11 +30,12 @@ SIDEBAR
 -----------------------------------------------------------*/
 .sidebar {
     height: 100vh;
-    flex: 0 0 15%;
+    width: 15%;
     background-color: var(--sidebar-bg);
     padding: 2em 0 0 0;
     border-right: 1px solid;
     border-color: var(--sidebar-border);
+    position: relative;
 
     &__company-logo {
         display: flex;
@@ -49,18 +50,34 @@ SIDEBAR
         letter-spacing: 4px;
         font-size: 0.9rem;
     }
-
+    
     &__statuses {
+        position: relative;
         color: var(--inactive-text);
+        font-weight: var(--font-regular);
         font-size: 0.9rem;
+        cursor: pointer;
 
         display: flex;
         align-items: center;
 
-        &::before {
-            content: '';
-            
+        &--active {
+            color: var(--primary-color);
+
+            &::before {
+                content: '';
+                background-color: var(--accent-color);
+                position: absolute;
+                height: 3em;
+                left: -35px;
+                top: -15px;
+                bottom: 0px;
+                width: 4px;
+                border-radius: 0px 6px 6px 0px;
+            }
         }
+
+        
     }
 
     &__total-tasks {
@@ -79,6 +96,35 @@ SIDEBAR
     &__statuses + &__statuses {
         margin-top: 1.5em;
     }
+
+    &__account {
+        width: 100%;
+        position: absolute;
+        background-color: var(--account-bg);
+        bottom: 0;
+        border-top: 1px solid hsl(240, 2%, 13%);
+        padding: 0.9rem 0;
+
+        display: flex;
+        align-items: center;
+    }
+    
+    &__user-email {
+        font-size: 0.875rem;
+        color: var(--primary-color);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin: 0 0.5em;
+    }
+
+    &__account-settings {
+        transform: rotate(90deg);
+        cursor: pointer;
+    }
+
+    &__user {
+
+    }
 }
 
 /*-----------------------------------------------------------
@@ -87,7 +133,7 @@ MAIN CONTENT
 .content {
     padding: 2.5em 0 0 0;
     height: 100vh;
-    flex: 0 0 85%;
+    width: 85%;
     background-color: var(--main-content-bg);
 
     /*-----------------------------------------------------------
