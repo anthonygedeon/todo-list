@@ -1,0 +1,101 @@
+/*-----------------------------------------------------------
+GRID
+-----------------------------------------------------------*/
+body {
+    display: flex;
+
+}
+
+.container {
+    width: 95%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    &.row {
+        display: flex;
+
+        &--nav {
+            align-items: center;
+
+        }
+    }
+
+    &--sidebar {
+        width: 75%;
+    }
+}
+
+/*-----------------------------------------------------------
+SIDEBAR
+-----------------------------------------------------------*/
+.sidebar {
+    height: 100vh;
+    flex: 0 0 15%;
+    background-color: var(--sidebar-bg);
+    padding: 2em 0 0 0;
+    border-right: 1px solid;
+    border-color: var(--sidebar-border);
+
+    &__company-logo {
+        display: flex;
+        align-items: center;
+        color: var(--primary-color);
+        margin-bottom: 2em;
+    }
+
+    &__logo-title {
+        text-transform: uppercase;
+        font-weight: var(--font-bold);
+        letter-spacing: 4px;
+        font-size: 0.9rem;
+    }
+
+    &__statuses {
+        color: var(--inactive-text);
+        font-size: 0.9rem;
+
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: '';
+            
+        }
+    }
+
+    &__total-tasks {
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background-color: var(--inactive-text);
+            vertical-align: middle;
+            margin: 0 0.3em;
+        }
+    }
+
+    &__statuses + &__statuses {
+        margin-top: 1.5em;
+    }
+}
+
+/*-----------------------------------------------------------
+MAIN CONTENT
+-----------------------------------------------------------*/
+.content {
+    padding: 2.5em 0 0 0;
+    height: 100vh;
+    flex: 0 0 85%;
+    background-color: var(--main-content-bg);
+
+    /*-----------------------------------------------------------
+    NAVIGATION
+    -----------------------------------------------------------*/
+    &__navigation {
+
+
+    }
+}
+

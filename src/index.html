@@ -23,13 +23,28 @@
 	<body>
 
         <aside class="sidebar">
-
+            <div class="container container--sidebar">
+                <section class="sidebar__company-logo">
+                    <img src="./images/logo.png" alt="Logo" class="logo">
+                    <a href="#" class="sidebar__logo-title">Tackleapp</a>
+                </section>
+                <div class="sidebar__categories">
+                    <p class="sidebar__statuses">All tasks <span class="sidebar__total-tasks">1</span></p>
+                    <p class="sidebar__statuses">Done <span class="sidebar__total-tasks">1</span></p>
+                    <p class="sidebar__statuses">In progress <span class="sidebar__total-tasks">0</span></p>
+                    <p class="sidebar__statuses">Pause <span class="sidebar__total-tasks">0</span></p>
+                </div>
+                <div class="sidebar__account">
+                    <p class="sidebar__user-email">anthony.gedeonn@gmail.com</p>
+                    <img src="./images/account-settings.svg" alt="Settings" class="sidebar__account-settings">
+                </div>
+            </div>
         </aside>
 
         <main class="content">
 
             <nav class="content__navigation">
-                <div class="container">
+                <div class="container row row--nav">
                     <input type="text" class="content__search" placeholder="Search">
                     <div class="content__past">
                         <p class="content__day-format">All time</p>

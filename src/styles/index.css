@@ -3,19 +3,158 @@ VARIABLES
 -----------------------------------------------------------*/
 :root {
   --primary-color: hsl(0, 0%, 100%);
-  --accent-color: hsl(244,100,71);
-  --main-content-bg: hsl(225,6,12);
-  --sidebar-bg: hsl(240,7,10);
-  --account-bg: hsl(0,0,100);
-  --inactive-text: hsl(0,0,54);
-  --input-text: hsl(210,5,52);
-  --todo-status-pause: hsl(47,81,61);
-  --todo-status-play: hsl(244,100,71);
-  --todo-status-done: hsl(151,85,43);
-  --modal-heading: hsl(0,0,7);
-  --modal-subheading: hsl(0,0,17);
+  --accent-color: hsl(244, 100%, 71%);
+  --main-content-bg: hsl(220, 5%, 12%);
+  --sidebar-bg: hsl(240, 6%, 10%);
+  --sidebar-border: hsl(240,4%,16%);
+  --account-bg: hsl(0, 0%, 100%);
+  --inactive-text: hsl(0, 0%, 54%);
+  --input-text: hsl(208, 5%, 52%);
+  --todo-status-pause: hsl(47, 81%, 61%);
+  --todo-status-play: hsl(244, 100%, 71%);
+  --todo-status-done: hsl(151, 85%, 43%);
+  --modal-heading: hsl(0, 0%, 7%);
+  --modal-subheading: #2b2b2b;
   --primary-font: 'Inter', sans-serif;
   --font-bold: 700;
   --font-regular: 400;
+}
+
+/*-----------------------------------------------------------
+BASIC STYLES
+-----------------------------------------------------------*/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--primary-font);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*-----------------------------------------------------------
+GRID
+-----------------------------------------------------------*/
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container {
+  width: 95%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container.row--nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container--sidebar {
+  width: 75%;
+}
+
+/*-----------------------------------------------------------
+SIDEBAR
+-----------------------------------------------------------*/
+.sidebar {
+  height: 100vh;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 15%;
+          flex: 0 0 15%;
+  background-color: var(--sidebar-bg);
+  padding: 2em 0 0 0;
+  border-right: 1px solid;
+  border-color: var(--sidebar-border);
+}
+
+.sidebar__company-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--primary-color);
+  margin-bottom: 2em;
+}
+
+.sidebar__logo-title {
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+}
+
+.sidebar__statuses {
+  color: var(--inactive-text);
+  font-size: 0.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sidebar__statuses::before {
+  content: '';
+}
+
+.sidebar__total-tasks::before {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: var(--inactive-text);
+  vertical-align: middle;
+  margin: 0 0.3em;
+}
+
+.sidebar__statuses + .sidebar__statuses {
+  margin-top: 1.5em;
+}
+
+/*-----------------------------------------------------------
+MAIN CONTENT
+-----------------------------------------------------------*/
+.content {
+  padding: 2.5em 0 0 0;
+  height: 100vh;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 85%;
+          flex: 0 0 85%;
+  background-color: var(--main-content-bg);
+  /*-----------------------------------------------------------
+    NAVIGATION
+    -----------------------------------------------------------*/
+}
+
+/*-----------------------------------------------------------
+LOGO
+-----------------------------------------------------------*/
+.logo {
+  margin-right: 0.8em;
 }
 /*# sourceMappingURL=index.css.map */
