@@ -261,7 +261,7 @@ TASK
   color: var(--inactive-text);
   font-weight: var(--font-regular);
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .task__current {
@@ -271,10 +271,6 @@ TASK
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.task__current:nth-child(1n + 2) {
-  border-bottom: 1px solid var(--sidebar-border);
 }
 
 .task__status-bg {
