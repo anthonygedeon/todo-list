@@ -29,6 +29,7 @@ NAVIGATION
         display: flex;
         align-items: center;
         margin-right: 3em;
+        position: relative;
     }
 
     &__day-format {
@@ -125,4 +126,154 @@ TASK
     &__settings {
         cursor: pointer;
     }
+
+    &__todo-settings, 
+    &__timer-settings-modal {
+        position: relative;
+    }
+
+    
+
+}
+
+/*-----------------------------------------------------------
+    TODO SETTING MODAL
+    -----------------------------------------------------------*/
+.settings-modal {
+
+    position: absolute;
+    background-color: var(--primary-color);
+    padding: 0.5em 1em;
+    width: 11em;
+    right: 0;
+    border-radius: var(--border-radius-modal);
+
+    &--pos {
+        right: -190px;
+        top: -70px;
+    }
+
+    &--content {
+        top: 40px;
+    }
+
+    &__text {
+        color: var(--modal-heading);
+        cursor: pointer;
+
+        & + & {
+            margin-top: 1em;
+        }
+    }
+}
+
+
+/*-----------------------------------------------------------
+ADD TODO MODAL
+-----------------------------------------------------------*/
+.add-todo-modal {
+    position: absolute;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 1.75rem;
+    border-radius: var(--border-radius-modal);
+    width: 100%;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+
+    &--delete {
+        justify-content: center;
+        max-width: 540px;
+
+        .add-todo-modal__heading {
+            text-align: center;
+            color: #ec2a2a;
+            font-size: 1.7rem;
+            margin-bottom: 0;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: hsl(210, 9%, 31%);
+        background-color: var(--primary-color);
+        background-clip: padding-box;
+        border: 2px solid hsl(210, 14%, 83%);
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        margin-top: 0.5em;
+    }
+
+    &__button-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 3em;
+        align-items: center;
+
+        &--center {
+            justify-content: center;
+        }
+    }
+}
+
+/*-----------------------------------------------------------
+BUTTON
+-----------------------------------------------------------*/
+.button {
+    align-self: flex-end;
+    border: none;
+    border-radius: var(--border-radius-modal);
+    padding: 0.7em 1em;
+    cursor: pointer;
+
+    &__primary {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        font-size: 0.875rem;
+    }
+
+    &--alert {
+        background-color: #ec2a2a;
+        border-color: #ec2a2a;
+    }
+
+    &--outline {
+        border: 2px solid;
+        border-color: var(--accent-color);
+        background-color: var(--primary-color);
+        color: var(--modal-heading);
+        margin-right: 1em;
+    }
+
+    &--outline-alert {
+        border: 2px solid;
+        border-color: #ec2a2a;
+        background-color: var(--primary-color);
+        color: var(--modal-heading);
+        margin-right: 1em;
+    }
+
+    
+}
+
+/*-----------------------------------------------------------
+ICONS
+-----------------------------------------------------------*/
+.exit {
+    cursor: pointer;
 }

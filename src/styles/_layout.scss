@@ -37,6 +37,11 @@ SIDEBAR
     border-color: var(--sidebar-border);
     position: relative;
 
+    &__user-settings-modal {
+        position: relative;
+        
+    }
+
     &__company-logo {
         display: flex;
         align-items: center;

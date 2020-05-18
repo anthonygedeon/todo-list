@@ -19,6 +19,8 @@ VARIABLES
     --primary-font: 'Inter', sans-serif;
     --font-bold: 700;
     --font-regular: 400;
+
+    --border-radius-modal: 6px;
 }
 
 /*-----------------------------------------------------------
@@ -43,3 +45,12 @@ a {
     color: inherit;
 }
 
+label {
+    margin-top: 2em;
+    font-size: 0.9rem;
+}
+
+textarea {
+    resize: none;
+    height: 8rem;
+}
