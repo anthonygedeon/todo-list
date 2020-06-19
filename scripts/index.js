@@ -1,32 +1,21 @@
 const log = console.log;
 
-import { taskCount, taskWrapper } from './helpers.js';
+import { taskCount, taskWrapper, inputTodo, addTodo } from './helpers.js';
 
 const Todo = (() => {
 
-    class Tasks {
-        constructor() {
-            this.collection = [];
-        }
-
-        addTodo(todo) {
-            this.collection.push(todo)
-        }
-
-        removeTodo() {
-
-        }
-
-        numberOfTodos() {
-            return this.collection.length;
-        }
-
-    }
+    const collection = [
+        { name: 'Task 1', complete: false, id: 0 },
+        { name: 'Task 2', complete: false, id: 1 },
+        { name: 'Task 3', complete: true, id: 3 },
+        { name: 'Task 4', complete: false, id: 4 },
+        { name: 'Task 5', complete: true, id: 5 },
+    ];
 
     class Project {
         constructor(name) {
             this.name = name;
-            this.id = null;
+            this.id = collection.length > 0 ? collection[collection.length - 1].id + 1 : 0;
         }
     }
 
@@ -34,7 +23,7 @@ const Todo = (() => {
         constructor(name) {
             this.name = name;
             this.complete = false;
-            this.id = null;
+            this.id = collection.length > 0 ? collection[collection.length - 1].id + 1 : 0;
         }
     }
 
@@ -53,19 +42,16 @@ const Todo = (() => {
         return task;
     }
 
-    const tasks = new Tasks();
-
-    const appendTodos = () => {
-        tasks.addTodo(new Todo('Task 1'))
-    }
-
-    appendTodos();
+    const _displayRemainingTodos = () => {
+        taskCount.textContent = `${collection.length} tasks remaining`;
+    };
 
     const _render = () => {
-        taskCount.textContent = `${tasks.numberOfTodos()} tasks remaining`;
+
+        _displayRemainingTodos();
 
         // render through each todo
-        tasks.collection.forEach(item => {
+        collection.forEach(item => {
             taskWrapper.insertAdjacentHTML('beforeend', createTodo(item))
         })
     }
@@ -73,6 +59,10 @@ const Todo = (() => {
     const start = () => {
         _render();
     };
+
+    inputTodo.addEventListener('input', event => {
+        console.log(event.target.value);
+    });
 
     return {
         start
