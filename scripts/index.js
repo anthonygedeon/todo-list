@@ -147,16 +147,14 @@ const Todo = (() => {
 
 	/**
 	 * @todo
-	 * 1. Handle different areas of click for todo item
+	 * [*] Handle different areas of click for todo item
 	 */
 	window.addEventListener('click', (event) => {
-		if (event.target.classList.contains('custom-checkbox')) {
-			const id = Number(
-				event.target.parentElement.parentElement.dataset.id
-            );
+		if (event.target.classList.contains('custom-checkbox') || event.target.classList.contains('js-todo-item')) {
+			const id = Number(event.target.closest('.task').dataset.id);
 			updateTodoCompletion(id);
             _displayRemainingTodos();
-		}
+        }
 	});
 
 	window.addEventListener('DOMContentLoaded', () => {
