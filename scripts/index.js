@@ -1,192 +1,102 @@
 const log = console.log;
 
-import {
-	taskCount,
-	taskWrapper,
-	inputTodo,
-	addTodo,
-	inputTodos,
-	clearBtn,
-	projectAdd,
-	projectCreate,
-} from './helpers.js';
+const displayController = (() => {
 
-const Todo = (() => {
-	let inputValue;
-	let preventFromAddingTodo = true;
+	const DOM_CLASSNAMES = {
 
-    let collection = [];
-    
-    // let projects = [
-    //     {name: 'YouTube', id: 0, todos: [
-    //         { name: 'Task 1', id: 0 },
-    //         { name: 'Task 2', id: 1 },
-    //         { name: 'Task 3', id: 2 },
-    //         { name: 'Task 4', id: 3 },
-    //     ]},
-    
-    //     {name: 'Work', id: 1, todos: [
-    //         { name: 'Task 1', id: 0 },
-    //         { name: 'Task 2', id: 1 },
-    //         { name: 'Task 3', id: 2 },
-    //         { name: 'Task 4', id: 3 },
-    //     ]},
-    
-    //     {name: 'Grocery', id: 2, todos: [
-    //         { name: 'Task 1', id: 0 },
-    //         { name: 'Task 2', id: 1 },
-    //         { name: 'Task 3', id: 2 },
-    //         { name: 'Task 4', id: 3 },
-    //     ]},
-    // ];
-    
-    // for (let i = 0; i < projects.length; i++) {
-    //     for (let j = 0; j < projects[i].todos.length; j++) {
-    
-    //     }
-    // }
+	};
 
-	class Project {
-		constructor(name) {
-			this.name = name;
-			this.id =
-				collection.length > 0
-					? collection[collection.length - 1].id + 1
-					: 0;
-		}
+	const taskWrapper = document.querySelector('.task-list');
+
+	function _createProjectItem(element, className, text) {
+		const tag = document.createElement(element);
+		tag.classList.className = className;
+		tag.textContent = text;
+		return tag;
 	}
 
-	class Todo {
-		constructor(name) {
-			this.name = name;
-			this.complete = false;
-			this.id =
-				collection.length > 0
-					? collection[collection.length - 1].id + 1
-					: 0;
-		}
-	}
+	function _removeValueFromInput(...inputs) {
+		const reset = '';
 
-	const createProject = (project) => {
-		const projectHTML = `<li class="list-name">${project.name}</li>`;
-		return projectHTML;
-	};
-
-	const createTodo = (todo) => {
-		const task = `
-            <div class="task" data-id="${todo.id}">
-                <input 
-                type="checkbox"
-                id="task-${todo.id}"
-                />
-                <label for="task-${todo.id}" class="js-todo-item">
-                <span class="custom-checkbox"></span>
-                ${todo.name}
-                </label>
-            </div>`;
-		return task;
-	};
-
-	const updateTodoCompletion = (id) => {
-		collection.forEach((todo) => {
-			if (todo.id == id) {
-				todo.complete = !todo.complete;
-			}
-		});
-
-	};
-
-	const _displayRemainingTodos = () => {
-        const totalTodos = collection.filter(todo => todo.complete !== true);
-        taskCount.textContent = `${totalTodos.length} tasks remaining`;
-
-	};
-
-	const removeTodoFromDOM = () => {
-		Array.from(taskWrapper.children).forEach((todo) => todo.remove());
-	};
-
-	const removeValueFromInput = () => {
-		inputTodos.forEach((input) => (input.value = ''));
-	};
-
-	const addTodoItem = (todo) => {
-		collection.push(new Todo(todo));
-	};
-
-	const render = () => {
-		if (collection.length === 0) {
-			return;
-		}
-
-		// render through each todo
-		collection.forEach((item) => {
-			taskWrapper.insertAdjacentHTML('beforeend', createTodo(item));
-		});
-	};
-
-	inputTodo.addEventListener('input', (event) => {
-		event.preventDefault();
-		inputValue = event.target.value;
-	});
-
-	const start = () => {
-		_displayRemainingTodos();
-
-		removeTodoFromDOM();
-
-		render();
-	};
-
-	addTodo.addEventListener('click', () => {
-		if (inputTodo.value == '') {
-			preventFromAddingTodo = false;
+		if (inputs.length === 1) {
+			document.querySelector(...inputs).value = reset;
 		} else {
-			preventFromAddingTodo = true;
+			document.querySelectorAll(inputs).forEach(input => {
+				input.value = reset;
+			});
 		}
 
-		if (preventFromAddingTodo) {
-            
-			addTodoItem(inputValue);
+	}
 
-			removeValueFromInput();
-
-			start();
-		}
-	});
-
-	clearBtn.addEventListener('click', () => {
-		collection = collection.filter((todo) => todo.complete == false);
-
-		start();
-    });
-    
-
-    projectCreate.addEventListener('input', () => {
-
-    });
-
-    projectAdd.addEventListener('click', () => {
-
-    });
-
-	window.addEventListener('click', (event) => {
-		if (event.target.classList.contains('custom-checkbox') || event.target.classList.contains('js-todo-item')) {
-			const id = Number(event.target.closest('.task').dataset.id);
-			updateTodoCompletion(id);
-            _displayRemainingTodos();
-        }
-	});
-
-	window.addEventListener('DOMContentLoaded', () => {
-		_displayRemainingTodos();
-
-		start();
-	});
+	function addProjectToList() {
+		const projectInputField = document.querySelector('.js-project-create');
+		const projectAddBtn = document.querySelector('.js-project-add');
+		projectAddBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+			const projectItem = _createProjectItem('li', 'list-item', projectInputField.value);
+			taskWrapper.append(projectItem);
+			_removeValueFromInput('.js-project-create');
+		});
+	}
 
 	return {
-		render,
+		addProjectToList
 	};
+
 })();
 
-Todo.render();
+const Todo = (() => {
+
+	let projects = [
+
+		{name: 'YouTube', id: 0, todos: [
+			{ name: 'Task 1', id: 0 },
+			{ name: 'Task 2', id: 1 },
+			{ name: 'Task 3', id: 2 },
+			{ name: 'Task 4', id: 3 },
+		]},
+	
+		{name: 'Work', id: 1, todos: [
+			{ name: 'Task 1', id: 0 },
+			{ name: 'Task 2', id: 1 },
+			{ name: 'Task 3', id: 2 },
+			{ name: 'Task 4', id: 3 },
+		]},
+	
+		{name: 'Grocery', id: 2, todos: [
+			{ name: 'Task 1', id: 0 },
+			{ name: 'Task 2', id: 1 },
+			{ name: 'Task 3', id: 2 },
+			{ name: 'Task 4', id: 3 },
+		]},
+
+	];
+
+	class Project {
+
+		constructor(name) {
+			this.name = name;
+			this.id =
+				projects.length > 0
+					? projects[projects.length - 1].id + 1
+					: 0;
+			this.todos = [];
+		}
+
+		add(project) {
+			projects.push(project);
+		}
+
+		remove(id) {
+			projects.splice(id, 1);
+		}
+
+	}
+
+	displayController.addProjectToList();
+
+	return {
+
+	};
+	
+})();
