@@ -2,9 +2,25 @@ class TaskModel {
     
     constructor() {
         this.lists = [
-            // { name: 'Task 1', id: 0, todos: [] },
-            // { name: 'Task 2', id: 1, todos: [] },
-            // { name: 'Task 3', id: 2, todos: [] }
+            { name: 'Work', id: 0, todos: [
+                { name: 'Check E-mails', id: 0, complete: false },
+                { name: 'Read slack messages', id: 2, complete: false },
+                { name: 'Update MySQL database', id: 3, complete: false },
+            ]},
+            { name: 'YouTube', id: 1, todos: [
+                { name: 'Start YouTube', id: 0, complete: false },
+                { name: 'Create thumbnail', id: 1, complete: false },
+                { name: 'Edit vido', id: 2, complete: false },
+                { name: 'Post', id: 3, complete: false },
+            ]},
+            { name: 'Grocery', id: 2, todos: [
+                { name: 'Milk', id: 0, complete: false },
+                { name: 'Bread', id: 1, complete: false },
+                { name: 'Eggs', id: 2, complete: false },
+                { name: 'Hot Fries', id: 3, complete: false },
+                { name: 'Cabbage', id: 4, complete: false },
+                { name: 'Salad', id: 5, complete: false },
+            ]}
         ];
     }
 
@@ -12,14 +28,19 @@ class TaskModel {
         const project = {
             name: text,
             todos: [],
-            id: this.lists > 0 ? this.lists[this.lists.length - 1].id + 1: 0,
+            id: this.lists.length > 0 ? this.lists[this.lists.length - 1].id + 1: 0,
         }
 
         return this.lists.push(project);
     }
 
+    getList(id) {
+        return this.lists.find(list => list.id === id);
+    }
+
+
     removeItem(id) {
-        return this.lists.splice(id, 1);
+        return this.lists = this.lists.filter(list => list.id !== id);
     }
 
 }
@@ -38,20 +59,77 @@ class TaskView {
 
     }
 
-    buildList(lists) {   
-        const listComponents = lists.map(list => `<li class="list-name">${list.name}</li>`);
-        console.log(listComponents);
-        return listComponents;
+    removeDuplicateElements() {
+        document.querySelectorAll('.list-name').forEach(list => list.remove());
     }
 
-    updateView(lists) {
-        
+    removeValueFromInput() {
+        document.querySelector('.js-project-create').value = '';
+    }
 
-        lists.forEach(list => {
-            this.listWrapper.append(this.buildList(list))
+    todosRemaining(remaining) {
+        document.querySelector('.task-count').textContent = `${remaining} tasks remaining`;
+    }
+
+    listHasFocus() {
+
+        const ACTIVE_CLASS = 'active-list';
+
+        Array.from(this.listWrapper.children).forEach(list => {
+            if (list.classList.contains(ACTIVE_CLASS)) {
+                list.classList.remove(ACTIVE_CLASS);
+            }
+        });
+        
+        event.target.classList.add(ACTIVE_CLASS);
+    }
+    
+    updateView(listArray) {
+        // remove all lists from DOM
+        this.removeDuplicateElements();
+
+        // loop through all objects in model's lists array 
+        listArray.forEach(list => {
+            // re render lists to list wrapper
+            document.querySelector('.task-list').insertAdjacentHTML('beforeend', `<li class="list-name" data-id="${list.id}">${list.name}</li>`);
         });
 
+        // remove value from input
+        this.removeValueFromInput();
     }
+
+    changeTodoHeading({ name, id }) {
+        document.querySelector('.list-title').setAttribute('data-id', id);
+        document.querySelector('.list-title').textContent = name;
+    }
+
+    populateTodos(list) {
+
+        document.querySelectorAll('.task').forEach(todo => todo.remove())
+
+        const todos = list.todos.map(todo => {
+            return `
+                <div class="task">
+                    <input 
+                    type="checkbox"
+                    id="task-${todo.id}"
+                    
+                    />
+                    <label for="task-${todo.id}" >
+                    <span class="custom-checkbox"></span>
+                    ${todo.name}
+                    </label>
+                </div>
+            `;
+        });
+
+        todos.forEach(todo => {
+            document.querySelector('.tasks').insertAdjacentHTML('beforeend', todo);
+        })
+        
+        
+    }
+
 
 }
 
@@ -66,15 +144,57 @@ class TaskController {
         document.querySelector('.js-project-add').addEventListener('click', (event) => {
             event.preventDefault();
             this.model.addItem(this.view.inputListData.value);
+            console.log(this.model.lists)
             this.view.updateView(this.model.lists);
+        });
+    }
+
+    loaded() {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            this.view.updateView(this.model.lists)
+        });
+    }
+
+    listHandler() {
+        this.view.listWrapper.addEventListener('click', (event) => {
+            if (event.target.matches('.list-name')) {
+                const listID = Number(event.target.dataset.id);
+                const currentList = this.model.getList(listID);
+                this.view.todosRemaining(currentList.todos.length);
+                this.view.listHasFocus();
+                this.view.populateTodos(currentList);
+                this.view.changeTodoHeading(currentList);
+            }
         })
+    }
+
+    deleteList() {
+        document.querySelector('.js-btn-delete-list').addEventListener('click', () => {
+            this.model.removeItem(Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id));
+            console.log(this.model.lists);
+            this.view.updateView(this.model.lists);
+        });
+    }
+
+    start() {
+        // load all data when page DOM is loaded
+        this.loaded();
+
+        // listen for clicks on add list btn
+        this.addListHandler();
+
+        // list for click on list text
+        this.listHandler();
+
+        // list for a click on remove list
+        this.deleteList();
     }
 
 }
 
 const controller = new TaskController(new TaskModel(), new TaskView());
 
-controller.addListHandler();
+controller.start();
 
 /*
     PLANS
