@@ -236,14 +236,14 @@ controller.start();
 
     DIVIDE & CONQUER - PROBLEMS
         [ ] List Component
-            [ ] Grab text from input field form
-            [ ] Text needs to be in the new Project(text) and pushed into an array that view can render
-            [ ] multiple projects can be Pushed
-            [ ] Each project has a unique ID
-            [ ] HTML structure of list text also has the unique ID that represents the listed projects
-            [ ] when list text is clicked, it shows the object that correlates to the list
-            [ ] when list text is clicked, it updates the text on the todo component 
-            [ ] when list text is clicked, the remaining task will be updated to reflect what the list object has in its object
+            [*] Grab text from input field form
+            [*] Text needs to be in the new Project(text) and pushed into an array that view can render
+            [*] multiple projects can be Pushed
+            [*] Each project has a unique ID
+            [*] HTML structure of list text also has the unique ID that represents the listed projects
+            [*] when list text is clicked, it shows the object that correlates to the list
+            [*] when list text is clicked, it updates the text on the todo component 
+            [*] when list text is clicked, the remaining task will be updated to reflect what the list object has in its object
 
         [ ] Todo Component
             [ ] Grab text from input field form
