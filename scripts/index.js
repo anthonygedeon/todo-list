@@ -10,7 +10,7 @@ class TaskModel {
             // { name: 'YouTube', id: 1, todos: [
             //     { name: 'Start YouTube', id: 0, complete: false },
             //     { name: 'Create thumbnail', id: 1, complete: false },
-            //     { name: 'Edit vido', id: 2, complete: false },
+            //     { name: 'Edit video', id: 2, complete: false },
             //     { name: 'Post', id: 3, complete: false },
             // ]},
             // { name: 'Grocery', id: 2, todos: [
@@ -52,8 +52,13 @@ class TaskModel {
         return this.lists = this.lists.filter(list => list.id !== id);
     }
 
+    toggleCompleteTodo(idOfProject, idOfTodo) {
+        const todo = this.lists[idOfProject].todos.find(todo => todo.id === idOfTodo)
+        return todo.complete = !todo.complete;
+    }
+
     removeTodo(id) {
-        return this.lists.todos = this.lists.todos.filter(list => list.id !== id);
+        return this.lists[id].todos = this.lists[id].todos.filter(todo => todo.complete === false);
     }
 
 }
@@ -116,17 +121,17 @@ class TaskView {
 
         todos.forEach(todo => {
             let todoHTML = `
-            <div class="task" data-id="${todo.id}">
+                <div class="task" data-id="${todo.id}">
 
-                <input 
-                type="checkbox"
-                id="task-${todo.id}"
-                />
-                <label for="task-${todo.id}">
-                <span class="custom-checkbox"></span>
-                ${todo.name}
-                </label>
-            </div> `;
+                    <input 
+                    type="checkbox"
+                    id="task-${todo.id}"
+                    />
+                    <label for="task-${todo.id}">
+                    <span class="custom-checkbox"></span>
+                    ${todo.name}
+                    </label>
+                </div> `;
             document.querySelector('.tasks').insertAdjacentHTML('beforeend', todoHTML);
         });
 
@@ -212,6 +217,29 @@ class TaskController {
         });
     }
 
+    todoHandler() {
+        window.addEventListener('click', (event) => {
+            if (event.target.matches('.custom-checkbox')) {
+                const idList = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].dataset.id);
+                const idTodo = Number(event.target.parentElement.parentElement.dataset.id);
+                this.model.toggleCompleteTodo(idList, idTodo);
+                const total = this.model.getList(idList).todos.filter(todo => todo.complete === false).length;
+                this.view.todosRemaining(total)
+            }
+        });
+    }
+
+    clearTodoHandler() {
+        document.querySelector('.js-btn-clear').addEventListener('click', (event) => {
+            const id = Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id)
+            this.model.removeTodo(id);
+            this.view.updateViewTodo(this.model.lists[id]);
+            const totalAfterTodosCleared = this.model.getList(id);
+            this.view.todosRemaining(totalAfterTodosCleared.todos.length);
+            console.log(this.model.lists)
+        })
+    }
+
     deleteList() {
         document.querySelector('.js-btn-delete-list').addEventListener('click', (event) => {
             const id = Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id);
@@ -234,6 +262,10 @@ class TaskController {
         this.deleteList();
 
         this.addTodoHandler();
+
+        this.todoHandler();
+
+        this.clearTodoHandler();
     }
 
 }
@@ -241,63 +273,3 @@ class TaskController {
 const controller = new TaskController(new TaskModel(), new TaskView());
 
 controller.start();
-
-/*
-    PLANS
-
-        1. Does your program have a user interface? What will it look like? What functionality will the interface have? Sketch this out on paper.
-            - The todo-list application has a user interface, the interface will be a crud application - create, read, update, delete
-            - You can type in the project name 
-            - delete a project
-            - add a todo to a certain project
-            - complete the todo
-            - display how many todos you have left
-            - render different todos based on the project the user selected
-            - You can easily remove the compeleted todos from the todo list
-
-        2. What inputs will your program have? Will the user enter data or will you get input from somewhere else?
-            - The user will enter data
-            - The user can delete the data
-            - The user can edit the data
-
-        3. What’s the desired output?
-            1. List Component
-                - User types in a project in the input field, can press ENTER or + to push their project into the list component
-                - User can delete the project from DOM and Logic when clicking on clear list button
-                - User can see what project they're currently in when pressing on the project list
-                - When user clicks on a different project, it will update the view to show the todos in the project that the user clicked in
-            
-            2. Todo list Component
-                - User can type in a task and push it into the DOM if ENTER is pressed or + button, 
-                - User can click on the todo and it will completed or not completed
-                - User can see the remaining tasks that are not completed
-                - User can clear all the completed todos
-
-        4. Given your inputs, what are the steps necessary to return the desired output?
-            - The list component input will be pushed into the business logic and then update view will render the newly created list text
-            it will then display the text in the list component
-
-            - The todo list input field will basically do the functionality but the text will be pushed into the project array and update view will render that
-
-
-    DIVIDE & CONQUER - PROBLEMS
-        [ ] List Component
-            [*] Grab text from input field form
-            [*] Text needs to be in the new Project(text) and pushed into an array that view can render
-            [*] multiple projects can be Pushed
-            [*] Each project has a unique ID
-            [*] HTML structure of list text also has the unique ID that represents the listed projects
-            [*] when list text is clicked, it shows the object that correlates to the list
-            [*] when list text is clicked, it updates the text on the todo component 
-            [*] when list text is clicked, the remaining task will be updated to reflect what the list object has in its object
-
-        [ ] Todo Component
-            [ ] Grab text from input field form
-            [ ] Text needs to be in new Todo(text) and pushed into the todo array that it's the project
-            [ ] Can Render the todos 
-            [ ] Can complete the todo and uncomplete the todo
-            [ ] can remove all completed todos when clear completed todo button is pressed
-
-        [ ] Validate Inputs
-            [ ] 
-*/
