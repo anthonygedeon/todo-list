@@ -34,13 +34,26 @@ class TaskModel {
         return this.lists.push(project);
     }
 
+    addTodo(text, idForProject) {
+        const todo = {
+            name: text,
+            complete: false,
+            id: this.lists[idForProject].todos.length > 0 ? this.lists[idForProject].todos[this.lists[idForProject].todos.length - 1].id + 1: 0,
+        };
+
+        this.getList(idForProject).todos.push(todo)
+    }
+
     getList(id) {
         return this.lists.find(list => list.id === id);
     }
 
-
     removeItem(id) {
         return this.lists = this.lists.filter(list => list.id !== id);
+    }
+
+    removeTodo(id) {
+        return this.lists.todos = this.lists.todos.filter(list => list.id !== id);
     }
 
 }
@@ -59,8 +72,8 @@ class TaskView {
 
     }
 
-    removeDuplicateElements() {
-        document.querySelectorAll('.list-name').forEach(list => list.remove());
+    removeDuplicateElements(element) {
+        document.querySelectorAll(element).forEach(list => list.remove());
     }
 
     removeValueFromInput() {
@@ -96,6 +109,25 @@ class TaskView {
 
         // remove value from input
         this.removeValueFromInput();
+    }
+
+    updateViewTodo({ todos }) {
+        this.removeDuplicateElements('.task');
+
+        todos.forEach(todo => {
+            let todoHTML = `
+            <div class="task" data-id="${todo.id}">
+                <input 
+                type="checkbox"
+                id="task-${todo.id}"
+                />
+                <label for="task-${todo.id}">
+                <span class="custom-checkbox"></span>
+                ${todo.name}
+                </label>
+            </div> `;
+            document.querySelector('.tasks').insertAdjacentHTML('beforeend', todoHTML);
+        });
     }
 
     changeTodoHeading({ name, id }) {
@@ -168,6 +200,16 @@ class TaskController {
         })
     }
 
+    addTodoHandler() {
+        document.querySelector('.js-btn-create-todo').addEventListener('click', (event) => {
+            const todoText = document.querySelector('.js-task-input').value;
+            event.preventDefault();
+            this.model.addTodo(todoText, 2);
+            console.log(this.model.lists)
+            this.view.updateViewTodo(this.model.lists[2])
+        });
+    }
+
     deleteList() {
         document.querySelector('.js-btn-delete-list').addEventListener('click', () => {
             this.model.removeItem(Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id));
@@ -188,6 +230,8 @@ class TaskController {
 
         // list for a click on remove list
         this.deleteList();
+
+        this.addTodoHandler();
     }
 
 }
