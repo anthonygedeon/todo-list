@@ -2,25 +2,25 @@ class TaskModel {
     
     constructor() {
         this.lists = [
-            { name: 'Work', id: 0, todos: [
-                { name: 'Check E-mails', id: 0, complete: false },
-                { name: 'Read slack messages', id: 2, complete: false },
-                { name: 'Update MySQL database', id: 3, complete: false },
-            ]},
-            { name: 'YouTube', id: 1, todos: [
-                { name: 'Start YouTube', id: 0, complete: false },
-                { name: 'Create thumbnail', id: 1, complete: false },
-                { name: 'Edit vido', id: 2, complete: false },
-                { name: 'Post', id: 3, complete: false },
-            ]},
-            { name: 'Grocery', id: 2, todos: [
-                { name: 'Milk', id: 0, complete: false },
-                { name: 'Bread', id: 1, complete: false },
-                { name: 'Eggs', id: 2, complete: false },
-                { name: 'Hot Fries', id: 3, complete: false },
-                { name: 'Cabbage', id: 4, complete: false },
-                { name: 'Salad', id: 5, complete: false },
-            ]}
+            // { name: 'Work', id: 0, todos: [
+            //     { name: 'Check E-mails', id: 0, complete: false },
+            //     { name: 'Read slack messages', id: 2, complete: false },
+            //     { name: 'Update MySQL database', id: 3, complete: false },
+            // ]},
+            // { name: 'YouTube', id: 1, todos: [
+            //     { name: 'Start YouTube', id: 0, complete: false },
+            //     { name: 'Create thumbnail', id: 1, complete: false },
+            //     { name: 'Edit vido', id: 2, complete: false },
+            //     { name: 'Post', id: 3, complete: false },
+            // ]},
+            // { name: 'Grocery', id: 2, todos: [
+            //     { name: 'Milk', id: 0, complete: false },
+            //     { name: 'Bread', id: 1, complete: false },
+            //     { name: 'Eggs', id: 2, complete: false },
+            //     { name: 'Hot Fries', id: 3, complete: false },
+            //     { name: 'Cabbage', id: 4, complete: false },
+            //     { name: 'Salad', id: 5, complete: false },
+            // ]}
         ];
     }
 
@@ -73,11 +73,11 @@ class TaskView {
     }
 
     removeDuplicateElements(element) {
-        document.querySelectorAll(element).forEach(list => list.remove());
+        document.querySelectorAll(element).forEach(node => node.remove());
     }
 
-    removeValueFromInput() {
-        document.querySelector('.js-project-create').value = '';
+    removeValueFromInput(input) {
+        document.querySelector(input).value = '';
     }
 
     todosRemaining(remaining) {
@@ -99,7 +99,7 @@ class TaskView {
     
     updateView(listArray) {
         // remove all lists from DOM
-        this.removeDuplicateElements();
+        this.removeDuplicateElements('.list-name');
 
         // loop through all objects in model's lists array 
         listArray.forEach(list => {
@@ -108,7 +108,7 @@ class TaskView {
         });
 
         // remove value from input
-        this.removeValueFromInput();
+        this.removeValueFromInput('.js-project-create');
     }
 
     updateViewTodo({ todos }) {
@@ -117,6 +117,7 @@ class TaskView {
         todos.forEach(todo => {
             let todoHTML = `
             <div class="task" data-id="${todo.id}">
+
                 <input 
                 type="checkbox"
                 id="task-${todo.id}"
@@ -128,6 +129,8 @@ class TaskView {
             </div> `;
             document.querySelector('.tasks').insertAdjacentHTML('beforeend', todoHTML);
         });
+
+        this.removeValueFromInput('.js-task-input');
     }
 
     changeTodoHeading({ name, id }) {
@@ -158,10 +161,8 @@ class TaskView {
         todos.forEach(todo => {
             document.querySelector('.tasks').insertAdjacentHTML('beforeend', todo);
         })
-        
-        
+    
     }
-
 
 }
 
@@ -176,7 +177,6 @@ class TaskController {
         document.querySelector('.js-project-add').addEventListener('click', (event) => {
             event.preventDefault();
             this.model.addItem(this.view.inputListData.value);
-            console.log(this.model.lists)
             this.view.updateView(this.model.lists);
         });
     }
@@ -202,18 +202,20 @@ class TaskController {
 
     addTodoHandler() {
         document.querySelector('.js-btn-create-todo').addEventListener('click', (event) => {
+            const id = Number(event.target.parentElement.parentElement.parentElement.parentElement.children[0].children[0].dataset.id)
             const todoText = document.querySelector('.js-task-input').value;
             event.preventDefault();
-            this.model.addTodo(todoText, 2);
-            console.log(this.model.lists)
-            this.view.updateViewTodo(this.model.lists[2])
+            this.model.addTodo(todoText, id);
+            this.view.updateViewTodo(this.model.lists[id]);
+            this.view.todosRemaining(this.model.lists[id].todos.length)
+
         });
     }
 
     deleteList() {
-        document.querySelector('.js-btn-delete-list').addEventListener('click', () => {
-            this.model.removeItem(Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id));
-            console.log(this.model.lists);
+        document.querySelector('.js-btn-delete-list').addEventListener('click', (event) => {
+            const id = Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id);
+            this.model.removeItem(id);
             this.view.updateView(this.model.lists);
         });
     }
