@@ -273,3 +273,6 @@ class TaskController {
 const controller = new TaskController(new TaskModel(), new TaskView());
 
 controller.start();
+
+// TODO
+// -> Have to set a default list 
