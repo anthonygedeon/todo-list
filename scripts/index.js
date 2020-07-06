@@ -89,6 +89,21 @@ class TaskView {
         document.querySelector('.task-count').textContent = `${remaining} tasks remaining`;
     }
 
+    defaultList() {
+        const firstItemInList = document.querySelector('.task-list :first-child');
+        
+        if (firstItemInList !== null) {
+
+            firstItemInList.click();
+        } else {
+            this.todosRemaining(0);
+            this.removeDuplicateElements('.task');
+            this.changeTodoHeading({name: '', id: 0});
+        }
+        
+
+    }
+
     listHasFocus() {
 
         const ACTIVE_CLASS = 'active-list';
@@ -117,6 +132,7 @@ class TaskView {
     }
 
     updateViewTodo({ todos }) {
+
         this.removeDuplicateElements('.task');
 
         todos.forEach(todo => {
@@ -183,6 +199,8 @@ class TaskController {
             event.preventDefault();
             this.model.addItem(this.view.inputListData.value);
             this.view.updateView(this.model.lists);
+            this.view.defaultList();
+
         });
     }
 
@@ -212,7 +230,7 @@ class TaskController {
             event.preventDefault();
             this.model.addTodo(todoText, id);
             this.view.updateViewTodo(this.model.lists[id]);
-            this.view.todosRemaining(this.model.lists[id].todos.length)
+            this.view.todosRemaining(this.model.lists[id].todos.length);
 
         });
     }
@@ -245,6 +263,7 @@ class TaskController {
             const id = Number(event.target.parentElement.parentElement.parentElement.children[0].children[0].dataset.id);
             this.model.removeItem(id);
             this.view.updateView(this.model.lists);
+            this.view.defaultList();
         });
     }
 
@@ -274,5 +293,3 @@ const controller = new TaskController(new TaskModel(), new TaskView());
 
 controller.start();
 
-// TODO
-// -> Have to set a default list 
