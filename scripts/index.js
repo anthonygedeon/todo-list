@@ -77,6 +77,10 @@ class TaskView {
 
     }
 
+    completeTodo(list) {
+        console.log(list)
+    }
+
     removeDuplicateElements(element) {
         document.querySelectorAll(element).forEach(node => node.remove());
     }
@@ -142,6 +146,7 @@ class TaskView {
                     <input 
                     type="checkbox"
                     id="task-${todo.id}"
+                    ${todo.complete ? 'checked' : ''}
                     />
                     <label for="task-${todo.id}">
                     <span class="custom-checkbox"></span>
@@ -158,33 +163,6 @@ class TaskView {
         document.querySelector('.list-title').setAttribute('data-id', id);
         document.querySelector('.list-title').textContent = name;
     }
-
-    populateTodos(list) {
-
-        document.querySelectorAll('.task').forEach(todo => todo.remove())
-
-        const todos = list.todos.map(todo => {
-            return `
-                <div class="task">
-                    <input 
-                    type="checkbox"
-                    id="task-${todo.id}"
-                    
-                    />
-                    <label for="task-${todo.id}" >
-                    <span class="custom-checkbox"></span>
-                    ${todo.name}
-                    </label>
-                </div>
-            `;
-        });
-
-        todos.forEach(todo => {
-            document.querySelector('.tasks').insertAdjacentHTML('beforeend', todo);
-        })
-    
-    }
-
 }
 
 class TaskController {
@@ -217,7 +195,7 @@ class TaskController {
                 const currentList = this.model.getList(listID);
                 this.view.todosRemaining(currentList.todos.length);
                 this.view.listHasFocus();
-                this.view.populateTodos(currentList);
+                this.view.updateViewTodo(currentList)
                 this.view.changeTodoHeading(currentList);
             }
         })
@@ -242,7 +220,7 @@ class TaskController {
                 const idTodo = Number(event.target.parentElement.parentElement.dataset.id);
                 this.model.toggleCompleteTodo(idList, idTodo);
                 const total = this.model.getList(idList).todos.filter(todo => todo.complete === false).length;
-                this.view.todosRemaining(total)
+                this.view.todosRemaining(total);
             }
         });
     }
