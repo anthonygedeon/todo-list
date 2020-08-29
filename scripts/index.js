@@ -209,7 +209,6 @@ class TaskController {
             this.model.addTodo(todoText, id);
             this.view.updateViewTodo(this.model.lists[id]);
             this.view.todosRemaining(this.model.lists[id].todos.length);
-
         });
     }
 
