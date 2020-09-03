@@ -1,30 +1,12 @@
 import React from 'react';
+import { ProjectList } from './ProjectList';
 
 function App() {
 	return (
 		<>
 			<h1 className="title">Stuff I need to do</h1>
 
-			<div className="all-tasks">
-				<h2 className="task-list-title">My lists</h2>
-				<ul className="task-list">
-					<li className="list-name active-list">Youtube</li>
-					<li className="list-name">Work</li>
-					<li className="list-name">Grocery</li>
-				</ul>
-
-				<form action="">
-					<input
-						type="text"
-						className="new list"
-						placeholder="new list name"
-						aria-label="new list name"
-					/>
-					<button className="btn create" aria-label="create new list">
-						+
-					</button>
-				</form>
-			</div>
+			<ProjectList />
 
 			<div className="todo-list">
 				<div className="todo-header">
