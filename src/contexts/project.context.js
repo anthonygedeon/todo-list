@@ -1,89 +1,47 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useReducer } from 'react';
+import projectReducer from '../reducers/projects.reducer';
 import uuid from 'react-uuid';
+
+const defaultProjects = [
+    {
+        projectName: 'YouTube',
+        id: uuid(),
+        tasks: [
+            {
+                id: uuid(),
+                taskName: 'edit video',
+                completed: true
+            },
+            {
+                id: uuid(),
+                taskName: 'publish',
+                completed: false
+            }
+        ]
+    },
+    {
+        projectName: 'Work',
+        id: uuid(),
+        tasks: [
+            {
+                id: uuid(),
+                taskName: 'Contact boss',
+                completed: false
+            }
+        ]
+    },
+]
 
 const ProjectContext = createContext();
 
 const ProjectProvider = (props) => {
 
-    const [project, setProject] = useState([
-		{
-			projectName: 'YouTube',
-            id: 0,
-            tasks: [
-                {
-                    id: 0,
-                    taskName: 'edit video',
-                    completed: true
-                },
-                {
-                    id: 1,
-                    taskName: 'publish',
-                    completed: false
-                }
-            ]
-		},
-		{
-			projectName: 'Work',
-            id: 1,
-            tasks: [
-                {
-                    id: 0,
-                    taskName: 'Contact boss',
-                    completed: false
-                }
-            ]
-		},
-		{
-			projectName: 'Grocery',
-            id: 2,
-            tasks: [
-                {
-                    id: 0,
-                    taskName: 'Milk',
-                    completed: false
-                },
-                {
-                    id: 1,
-                    taskName: 'Fruit loops',
-                    completed: false
-                },
-                {
-                    id: 2,
-                    taskName: 'Yogurt',
-                    completed: false
-                }
-            ]
-		},
-    ]);
+    const [projects] = useReducer(projectReducer, defaultProjects);
 
-    const [task, setTask] = useState({});
-    
+    console.log(projects)
+
     return (
-        <ProjectContext.Provider value={{
-            projects: project,
-
-            addProject(projectName) {
-
-                setProject(prevState => [...prevState, {
-                    id: uuid(),
-                    projectName,
-                    tasks: [],
-                }]);
-
-            },
-
-            addTask() {
-
-            },
-
-            deleteProject() {
-
-            },
-
-            deleteTask() {
-
-            }
-        }}>
+        <ProjectContext.Provider value={projects}>
             {props.children}
         </ProjectContext.Provider>
     );

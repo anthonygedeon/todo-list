@@ -16,12 +16,11 @@ const Project = () => {
 		}
 	};
 
-
 	return (
 		<ul className="task-list" ref={allProjects} onClick={activateProject}>
 			<ProjectContext.Consumer>
 				{(context) => {
-					return context.projects.map((project) => (
+					return context.map((project) => (
 						<li key={project.id} className="list-name">
 							{project.projectName}
 						</li>
