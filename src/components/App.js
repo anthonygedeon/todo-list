@@ -1,10 +1,7 @@
 import React from 'react';
-import { ProjectProvider } from '../providers/ProjectProvider';
+import { ProjectProvider } from '../contexts/project.context';
 import { ProjectList } from './ProjectList';
-import { CurrentTask } from './CurrentTask';
-import { CreateTask } from './CreateTask';
-import { Tasks } from './Tasks';
-import { Delete } from './Delete';
+import { TaskApp } from './TaskApp';
 
 function App() {
 	return (
@@ -13,18 +10,7 @@ function App() {
 
 			<ProjectProvider>
 				<ProjectList />
-
-				<div className="todo-list">
-					<CurrentTask />
-
-					<div className="todo-body">
-						<Tasks />
-
-						<CreateTask />
-
-						<Delete />
-					</div>
-				</div>
+				<TaskApp />
 			</ProjectProvider>
 		</>
 	);

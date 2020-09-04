@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { ProjectContext } from '../providers/ProjectProvider';
+import { ProjectContext } from '../contexts/project.context';
 
 const Project = () => {
 	const allProjects = useRef();
@@ -15,6 +15,7 @@ const Project = () => {
 			event.target.classList.add('active-list');
 		}
 	};
+
 
 	return (
 		<ul className="task-list" ref={allProjects} onClick={activateProject}>

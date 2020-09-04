@@ -1,7 +1,7 @@
 import React from 'react';
 import { Task } from './Task';
 
-const Tasks = () => {
+const TaskList = () => {
 	return (
 		<div className="tasks">
 			<Task id={0} todo="Workout"/>
@@ -13,4 +13,4 @@ const Tasks = () => {
 	);
 };
 
-export { Tasks };
+export { TaskList };

@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import uuid from 'react-uuid';
 
 const ProjectContext = createContext();
 
@@ -54,24 +55,31 @@ const ProjectProvider = (props) => {
             ]
 		},
     ]);
+
+    const [task, setTask] = useState({});
     
     return (
         <ProjectContext.Provider value={{
             projects: project,
+
             addProject(projectName) {
 
                 setProject(prevState => [...prevState, {
-                    id: 3,
+                    id: uuid(),
                     projectName,
                     tasks: [],
-                }])
+                }]);
+
             },
+
             addTask() {
 
             },
+
             deleteProject() {
 
             },
+
             deleteTask() {
 
             }
