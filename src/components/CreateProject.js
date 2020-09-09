@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import useInputState from '../hooks/useInputState';
 import { ProjectContext } from '../contexts/project.context';
 
