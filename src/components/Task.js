@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Task = (props) => {
+const Task = ({ id, taskName, completed }) => {
 	return (
-        <div className="task">
-            <input type="checkbox" id={`task-${props.id}`} />
-            <label htmlFor="task-1">
+        <div className="task" >
+            <input type="checkbox" key={id} id={`task-${id}`}/>
+            <label htmlFor={`task-${id}`}>
                 <span className="custom-checkbox"></span>
-                {props.todo}
+                {taskName}
             </label>
         </div>
 	);

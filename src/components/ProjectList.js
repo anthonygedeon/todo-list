@@ -11,9 +11,9 @@ const ProjectList = () => {
 	const activateProject = (event) => {
 		if (event.target.classList.contains('list-name')) {
 			// remove all
-			allProjects.current.childNodes.forEach((node) =>
+			allProjects.current.childNodes.forEach((node) => {
 				node.classList.remove('active-list')
-			);
+			});
 
 			// project was clicked
 			event.target.classList.add('active-list');
@@ -30,7 +30,11 @@ const ProjectList = () => {
 			>
 				{projects.map((project) => {
 					return (
-						<Project id={project.id} name={project.projectName} />
+						<Project
+							key={project.id}
+							id={project.id}
+							name={project.projectName}
+						/>
 					);
 				})}
 			</ul>

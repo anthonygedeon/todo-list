@@ -4,16 +4,31 @@ import {
 	ADD_TASK,
 	REMOVE_TASK,
 	TOGGLE_TASK,
+	PROJECT_ACTIVE,
 } from '../constants/actions';
 import uuid from 'react-uuid';
 
 const reducer = (state, action) => {
-	switch (action) {
+	switch (action.type) {
 		case ADD_PROJECT:
-			return;
+			return [
+				...state,
+				{
+					id: uuid(),
+					projectName: action.projectName || '',
+					tasks: [],
+				},
+			];
+
+		case PROJECT_ACTIVE:
+			return state.map((project) => {
+				return {
+					...project,
+				};
+			});
 
 		case REMOVE_PROJECT:
-			return;
+			return state.filter((project) => project.id !== action.id);
 
 		case ADD_TASK:
 			return;
@@ -23,6 +38,9 @@ const reducer = (state, action) => {
 
 		case TOGGLE_TASK:
 			return;
+
+		default:
+			return state;
 	}
 };
 

@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Task } from './Task';
+import { ProjectContext } from '../contexts/project.context';
 
 const TaskList = () => {
+	const projects = useContext(ProjectContext);
+
 	return (
 		<div className="tasks">
-			<Task id={0} todo="Workout"/>
-
-			<Task id={1} todo="Study for medical exam"/>
-
-			<Task id={2} todo="Get Groceries"/>
+			{projects.map((project) =>
+				project.tasks.map((task) => (
+					<Task
+						key={task.id}
+						id={task.id}
+						taskName={task.taskName}
+						completed={task.completed}
+					/>
+				))
+			)}
 		</div>
 	);
 };

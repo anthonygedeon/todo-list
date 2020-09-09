@@ -6,7 +6,8 @@ import { useState } from 'react';
  */
 export default (initialValue) => {
 	const [value, setValue] = useState(initialValue);
+	const onChange = (event) => setValue(event.target.value) 
 	const reset = () => setValue('');
 
-	return [value, reset];
+	return [value, reset, onChange];
 };

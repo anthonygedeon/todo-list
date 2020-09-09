@@ -1,51 +1,41 @@
 import React, { createContext, useReducer } from 'react';
-import projectReducer from '../reducers/projects.reducer';
+import reducer from '../reducers/projects.reducer';
 import uuid from 'react-uuid';
 
 const defaultProjects = [
-    {
-        projectName: 'YouTube',
+	{
+		projectName: 'Grocies List',
         id: uuid(),
-        tasks: [
-            {
-                id: uuid(),
-                taskName: 'edit video',
-                completed: true
-            },
-            {
-                id: uuid(),
-                taskName: 'publish',
-                completed: false
-            }
-        ]
-    },
-    {
-        projectName: 'Work',
-        id: uuid(),
-        tasks: [
-            {
-                id: uuid(),
-                taskName: 'Contact boss',
-                completed: false
-            }
-        ]
-    },
-]
+		tasks: [
+			{
+				id: uuid(),
+				taskName: 'Milk',
+				completed: true,
+			},
+			{
+				id: uuid(),
+				taskName: 'Eggs',
+				completed: false,
+			},
+		],
+	},
+];
 
-const ProjectContext = createContext();
+export const ProjectContext = createContext();
+export const DispatchContext = createContext();
 
 const ProjectProvider = (props) => {
+    const [projects, dispatch] = useReducer(reducer, defaultProjects);
+    
+    console.log(projects);
 
-    const [projects] = useReducer(projectReducer, defaultProjects);
-
-    console.log(projects)
-
-    return (
-        <ProjectContext.Provider value={projects}>
-            {props.children}
-        </ProjectContext.Provider>
-    );
-
+	return (
+		<ProjectContext.Provider value={projects}>
+			<DispatchContext.Provider value={dispatch}>
+				{props.children}
+			</DispatchContext.Provider>
+		</ProjectContext.Provider>
+	);
 };
 
-export { ProjectProvider, ProjectContext }
+export { ProjectProvider };
