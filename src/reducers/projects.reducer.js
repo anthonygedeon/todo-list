@@ -14,7 +14,8 @@ const reducer = (state, action) => {
 			return [
 				...state,
 				{
-					id: uuid(),
+                    id: uuid(),
+                    active: false,
 					projectName: action.projectName || '',
 					tasks: [],
 				},
@@ -22,8 +23,10 @@ const reducer = (state, action) => {
 
 		case PROJECT_ACTIVE:
 			return state.map((project) => {
+
 				return {
-					...project,
+                    ...project,
+                    active: project.id === action.id,
 				};
 			});
 

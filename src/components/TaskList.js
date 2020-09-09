@@ -7,16 +7,18 @@ const TaskList = () => {
 
 	return (
 		<div className="tasks">
-			{projects.map((project) =>
-				project.tasks.map((task) => (
-					<Task
-						key={task.id}
-						id={task.id}
-						taskName={task.taskName}
-						completed={task.completed}
-					/>
-				))
-			)}
+			{projects.map((project) => {
+				if (project.active) {
+					return project.tasks.map((task) => (
+						<Task
+							key={task.id}
+							id={task.id}
+							taskName={task.taskName}
+							completed={task.completed}
+						/>
+					));
+				}
+			})}
 		</div>
 	);
 };

@@ -4,18 +4,53 @@ import uuid from 'react-uuid';
 
 const defaultProjects = [
 	{
-		projectName: 'Grocies List',
+		projectName: 'Groceries list',
         id: uuid(),
+        active: false,
 		tasks: [
 			{
 				id: uuid(),
 				taskName: 'Milk',
-				completed: true,
+				completed: false,
 			},
 			{
 				id: uuid(),
 				taskName: 'Eggs',
 				completed: false,
+			},
+		],
+    },
+    {
+		projectName: 'Side Projects',
+        id: uuid(),
+        active: false,
+		tasks: [
+			{
+				id: uuid(),
+				taskName: 'Pomodoro Desktop',
+				completed: false,
+			},
+			{
+				id: uuid(),
+				taskName: 'Budget App',
+				completed: true,
+			},
+		],
+    },
+    {
+		projectName: 'YouTube content',
+        id: uuid(),
+        active: false,
+		tasks: [
+			{
+				id: uuid(),
+				taskName: 'Edit video',
+				completed: true,
+			},
+			{
+				id: uuid(),
+				taskName: 'Publish video',
+				completed: true,
 			},
 		],
 	},

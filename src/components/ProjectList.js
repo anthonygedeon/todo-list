@@ -1,10 +1,12 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Project } from './Project';
 import { CreateProject } from './CreateProject';
-import { ProjectContext } from '../contexts/project.context';
+import { ProjectContext, DispatchContext } from '../contexts/project.context';
+import { PROJECT_ACTIVE } from '../constants/actions';
 
 const ProjectList = () => {
 	const projects = useContext(ProjectContext);
+	const dispatch = useContext(DispatchContext);
 
 	const allProjects = useRef();
 
@@ -12,11 +14,22 @@ const ProjectList = () => {
 		if (event.target.classList.contains('list-name')) {
 			// remove all
 			allProjects.current.childNodes.forEach((node) => {
-				node.classList.remove('active-list')
+				if (node.classList.contains('active-list')) {
+					node.classList.remove('active-list');
+					dispatch({ type: PROJECT_ACTIVE, isActive: false });
+				}
 			});
 
 			// project was clicked
 			event.target.classList.add('active-list');
+
+			projects.map((project) => {
+				dispatch({
+					type: PROJECT_ACTIVE,
+					id: project.id,
+					isActive: true,
+				});
+			});
 		}
 	};
 
