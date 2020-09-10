@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Project } from './Project';
 import { CreateProject } from './CreateProject';
 import { ProjectContext, DispatchContext } from '../contexts/project.context';
@@ -9,6 +9,12 @@ const ProjectList = () => {
 	const dispatch = useContext(DispatchContext);
 
 	const allProjects = useRef();
+
+	useEffect(() => {
+		
+		projects[0].active = true;
+
+	}, [])
 
 	const activateProject = (event) => {
 		if (event.target.classList.contains('list-name')) {
@@ -24,11 +30,13 @@ const ProjectList = () => {
 			event.target.classList.add('active-list');
 
 			projects.map((project) => {
-				dispatch({
-					type: PROJECT_ACTIVE,
-					id: project.id,
-					isActive: true,
-				});
+				if (project.id === event.target.dataset.projectid) {
+					dispatch({
+						type: PROJECT_ACTIVE,
+						id: project.id,
+						isActive: true,
+					});
+				}
 			});
 		}
 	};

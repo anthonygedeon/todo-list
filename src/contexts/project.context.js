@@ -33,7 +33,7 @@ const defaultProjects = [
 			{
 				id: uuid(),
 				taskName: 'Budget App',
-				completed: true,
+				completed: false,
 			},
 		],
     },
@@ -45,12 +45,12 @@ const defaultProjects = [
 			{
 				id: uuid(),
 				taskName: 'Edit video',
-				completed: true,
+				completed: false,
 			},
 			{
 				id: uuid(),
 				taskName: 'Publish video',
-				completed: true,
+				completed: false,
 			},
 		],
 	},

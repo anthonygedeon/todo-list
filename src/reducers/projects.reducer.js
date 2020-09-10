@@ -9,8 +9,13 @@ import {
 import uuid from 'react-uuid';
 
 const reducer = (state, action) => {
+
+    const activeProject = state.filter((project) => project.active !== false);
+
+
 	switch (action.type) {
 		case ADD_PROJECT:
+            
 			return [
 				...state,
 				{
@@ -23,7 +28,6 @@ const reducer = (state, action) => {
 
 		case PROJECT_ACTIVE:
 			return state.map((project) => {
-
 				return {
                     ...project,
                     active: project.id === action.id,
@@ -31,16 +35,34 @@ const reducer = (state, action) => {
 			});
 
 		case REMOVE_PROJECT:
-			return state.filter((project) => project.id !== action.id);
+			return state.filter((project) => project.active === false);
 
 		case ADD_TASK:
-			return;
+            
 
-		case REMOVE_TASK:
+            activeProject[0].tasks.push({
+                id: uuid(),
+                taskName: action.taskName || '',
+                completed: false,
+            })
+
+            return [...state];
+
+		case REMOVE_TASK:            
 			return;
 
 		case TOGGLE_TASK:
-			return;
+
+            activeProject[0].tasks.map((task) => {
+
+                if (task.id === action.id) {
+                    console.log(task)
+                    return task.completed = !task.completed;
+                }
+
+            });
+
+			return [...state];
 
 		default:
 			return state;
