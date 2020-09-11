@@ -62,8 +62,6 @@ export const DispatchContext = createContext();
 const ProjectProvider = (props) => {
     const [projects, dispatch] = useReducer(reducer, defaultProjects);
     
-    console.log(projects);
-
 	return (
 		<ProjectContext.Provider value={projects}>
 			<DispatchContext.Provider value={dispatch}>
