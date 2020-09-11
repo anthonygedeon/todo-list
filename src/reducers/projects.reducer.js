@@ -9,18 +9,15 @@ import {
 import uuid from 'react-uuid';
 
 const reducer = (state, action) => {
-
-    const activeProject = state.filter((project) => project.active !== false);
-
+	const activeProject = state.filter((project) => project.active !== false);
 
 	switch (action.type) {
 		case ADD_PROJECT:
-            
 			return [
 				...state,
 				{
-                    id: uuid(),
-                    active: false,
+					id: uuid(),
+					active: false,
 					projectName: action.projectName || '',
 					tasks: [],
 				},
@@ -29,8 +26,8 @@ const reducer = (state, action) => {
 		case PROJECT_ACTIVE:
 			return state.map((project) => {
 				return {
-                    ...project,
-                    active: project.id === action.id,
+					...project,
+					active: project.id === action.id,
 				};
 			});
 
@@ -38,31 +35,29 @@ const reducer = (state, action) => {
 			return state.filter((project) => project.active === false);
 
 		case ADD_TASK:
-            
+			activeProject[0].tasks.push({
+				id: uuid(),
+				taskName: action.taskName || '',
+				completed: false,
+			});
 
-            activeProject[0].tasks.push({
-                id: uuid(),
-                taskName: action.taskName || '',
-                completed: false,
-            })
+			return [...state];
 
-            return [...state];
-
-		case REMOVE_TASK:            
+		case REMOVE_TASK:
 			return;
 
 		case TOGGLE_TASK:
 
-            activeProject[0].tasks.map((task) => {
-
-                if (task.id === action.id) {
-                    console.log(task)
-                    return task.completed = !task.completed;
-                }
-
-            });
-
-			return [...state];
+			return state.map((project) => {
+				return {
+					...project,
+					tasks: project.tasks.map((task) =>
+						task.id === action.id
+							? { ...task, completed: !task.completed }
+							: { ...task }
+					),
+				};
+			});
 
 		default:
 			return state;
