@@ -44,7 +44,21 @@ const reducer = (state, action) => {
 			return [...state];
 
 		case REMOVE_TASK:
-			return;
+
+			return state.map((project) => {
+
+				if (project.active) {
+					return {
+						...project,
+						tasks: project.tasks.filter((task) => !task.completed),
+					};
+				} else {
+					return { ...project }
+
+				}
+
+			});
+
 
 		case TOGGLE_TASK:
 
@@ -55,7 +69,7 @@ const reducer = (state, action) => {
 						task.id === action.id
 							? { ...task, completed: !task.completed }
 							: { ...task }
-					),
+					).sort((a, b) => a.completed - b.completed),
 				};
 			});
 

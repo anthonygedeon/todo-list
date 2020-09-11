@@ -8,13 +8,15 @@ const CurrentTask = () => {
 		<div className="todo-header">
 			{projects.map((project) => {
 				if (project.active) {
+					const getAllUncompletedTasks = project.tasks.filter((task) => !task.completed);
+
 					return (
 						<>
 							<h2 className="list-title">
 								{project.projectName}
 							</h2>
 							<p className="task-count">
-								{project.tasks.length} tasks remaining
+								{getAllUncompletedTasks.length} tasks remaining
 							</p>
 						</>
 					);
