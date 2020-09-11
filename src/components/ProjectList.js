@@ -11,8 +11,13 @@ const ProjectList = () => {
 	const allProjects = useRef();
 
 	useEffect(() => {
-		console.log('Debugging: ', projects)
-	}, [projects])
+		
+		console.log('Debugging: ', projects);
+
+
+		document.querySelector('.list-name').click()
+
+	}, [])
 
 	const activateProject = (event) => {
 		if (event.target.classList.contains('list-name')) {
@@ -38,8 +43,6 @@ const ProjectList = () => {
 			});
 		}
 	};
-
-
 
 	return (
 		<div className="all-tasks">

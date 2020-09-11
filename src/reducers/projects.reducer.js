@@ -44,32 +44,28 @@ const reducer = (state, action) => {
 			return [...state];
 
 		case REMOVE_TASK:
-
 			return state.map((project) => {
-
 				if (project.active) {
 					return {
 						...project,
 						tasks: project.tasks.filter((task) => !task.completed),
 					};
 				} else {
-					return { ...project }
-
+					return { ...project };
 				}
-
 			});
 
-
 		case TOGGLE_TASK:
-
 			return state.map((project) => {
 				return {
 					...project,
-					tasks: project.tasks.map((task) =>
-						task.id === action.id
-							? { ...task, completed: !task.completed }
-							: { ...task }
-					).sort((a, b) => a.completed - b.completed),
+					tasks: project.tasks
+						.map((task) =>
+							task.id === action.id
+								? { ...task, completed: !task.completed }
+								: { ...task }
+						)
+						.sort((a, b) => a.completed - b.completed),
 				};
 			});
 
