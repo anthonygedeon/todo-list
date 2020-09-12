@@ -23,6 +23,23 @@ const reducer = (state, action) => {
 				},
 			];
 
+		case 'LAST_ACTIVE':
+
+			return state.map((project, index) => {
+
+				console.log(project, index);
+
+				if (state.length - 1 === index) {
+					return {
+						...project,
+						active: true
+					}
+				} else {
+					return { ...project };
+				}
+
+			})
+
 		case PROJECT_ACTIVE:
 			return state.map((project) => {
 				return {

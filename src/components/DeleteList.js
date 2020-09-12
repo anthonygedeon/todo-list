@@ -10,6 +10,7 @@ const DeleteList = () => {
 			className="btn delete"
 			onClick={() => {
 				dispatch({ type: REMOVE_PROJECT });
+				dispatch({ type: 'LAST_ACTIVE' })
 			}}
 		>
 			Delete list

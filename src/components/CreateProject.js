@@ -31,7 +31,11 @@ const CreateProject = () => {
 
 						clearValue();
 
-						dispatch({ type: ADD_PROJECT, projectName: inputValue.current.value })
+						dispatch({ type: 'PROJECT_ACTIVE', isActive: false });
+
+						dispatch({ type: ADD_PROJECT, projectName: inputValue.current.value });
+
+						dispatch({ type: 'LAST_ACTIVE' });
 					}
 				}}
 			>

@@ -1,60 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import reducer from '../reducers/projects.reducer';
-import uuid from 'react-uuid';
 
-const defaultProjects = [
-	{
-		projectName: 'Groceries list',
-        id: uuid(),
-        active: false,
-		tasks: [
-			{
-				id: uuid(),
-				taskName: 'Milk',
-				completed: false,
-			},
-			{
-				id: uuid(),
-				taskName: 'Eggs',
-				completed: false,
-			},
-		],
-    },
-    {
-		projectName: 'Side Projects',
-        id: uuid(),
-        active: false,
-		tasks: [
-			{
-				id: uuid(),
-				taskName: 'Pomodoro Desktop',
-				completed: false,
-			},
-			{
-				id: uuid(),
-				taskName: 'Budget App',
-				completed: false,
-			},
-		],
-    },
-    {
-		projectName: 'YouTube content',
-        id: uuid(),
-        active: false,
-		tasks: [
-			{
-				id: uuid(),
-				taskName: 'Edit video',
-				completed: false,
-			},
-			{
-				id: uuid(),
-				taskName: 'Publish video',
-				completed: false,
-			},
-		],
-	},
-];
+const defaultProjects = [];
 
 export const ProjectContext = createContext();
 export const DispatchContext = createContext();

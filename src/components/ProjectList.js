@@ -15,9 +15,7 @@ const ProjectList = () => {
 		console.log('Debugging: ', projects);
 
 
-		document.querySelector('.list-name').click()
-
-	}, [])
+	}, [projects])
 
 	const activateProject = (event) => {
 		if (event.target.classList.contains('list-name')) {
