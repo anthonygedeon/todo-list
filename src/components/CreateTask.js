@@ -15,7 +15,7 @@ const CreateTask = () => {
 	if (projects.length === 0) {
 		return (
 			<div className="new-task-creator">
-				<h2>No Todos</h2>
+				<h2>No Tasks</h2>
 			</div>
 		);
 	} else {

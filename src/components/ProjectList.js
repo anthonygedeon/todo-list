@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useContext, useRef, useEffect, useMemo } from 'react';
 import { Project } from './Project';
 import { CreateProject } from './CreateProject';
 import { ProjectContext, DispatchContext } from '../contexts/project.context';
@@ -11,26 +11,33 @@ const ProjectList = () => {
 	const allProjects = useRef();
 
 	useEffect(() => {
-		
 		console.log('Debugging: ', projects);
 
+		projects.map((project) => {
 
-	}, [projects])
+			if (project.active) {
+
+				allProjects.current.childNodes.forEach((node) => {
+
+					node.classList.remove('active-list');
+					
+					if (project.id === node.dataset.projectid) {
+						node.classList.add('active-list');
+					}
+
+				});
+
+			} 
+
+		});
+
+	}, [projects]);
 
 	const activateProject = (event) => {
 		if (event.target.classList.contains('list-name')) {
-			// remove all
-			allProjects.current.childNodes.forEach((node) => {
-				if (node.classList.contains('active-list')) {
-					node.classList.remove('active-list');
-					dispatch({ type: PROJECT_ACTIVE, isActive: false });
-				}
-			});
-
-			// project was clicked
-			event.target.classList.add('active-list');
-
+			
 			projects.map((project) => {
+
 				if (project.id === event.target.dataset.projectid) {
 					dispatch({
 						type: PROJECT_ACTIVE,
@@ -38,6 +45,7 @@ const ProjectList = () => {
 						isActive: true,
 					});
 				}
+
 			});
 		}
 	};
@@ -50,15 +58,17 @@ const ProjectList = () => {
 				ref={allProjects}
 				onClick={activateProject}
 			>
-				{projects.map((project) => {
-					return (
-						<Project
-							key={project.id}
-							id={project.id}
-							name={project.projectName}
-						/>
-					);
-				})}
+				{useMemo(() => {
+					return projects.map((project) => {
+						return (
+							<Project
+								key={project.id}
+								id={project.id}
+								name={project.projectName}
+							/>
+						);
+					});
+				}, [projects])}
 			</ul>
 			<CreateProject />
 		</div>

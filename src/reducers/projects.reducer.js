@@ -27,8 +27,6 @@ const reducer = (state, action) => {
 
 			return state.map((project, index) => {
 
-				console.log(project, index);
-
 				if (state.length - 1 === index) {
 					return {
 						...project,
@@ -38,7 +36,7 @@ const reducer = (state, action) => {
 					return { ...project };
 				}
 
-			})
+			});
 
 		case PROJECT_ACTIVE:
 			return state.map((project) => {
@@ -82,7 +80,6 @@ const reducer = (state, action) => {
 								? { ...task, completed: !task.completed }
 								: { ...task }
 						)
-						.sort((a, b) => a.completed - b.completed),
 				};
 			});
 
