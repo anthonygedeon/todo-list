@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect, useMemo } from 'react';
 import { Project } from './Project';
 import { CreateProject } from './CreateProject';
 import { ProjectContext, DispatchContext } from '../contexts/project.context';
-import { PROJECT_ACTIVE } from '../constants/actions';
+import { SELECTED_PROJECT_ACTIVE } from '../constants/actions';
 
 const ProjectList = () => {
 	const projects = useContext(ProjectContext);
@@ -40,7 +40,7 @@ const ProjectList = () => {
 
 				if (project.id === event.target.dataset.projectid) {
 					dispatch({
-						type: PROJECT_ACTIVE,
+						type: SELECTED_PROJECT_ACTIVE,
 						id: project.id,
 						isActive: true,
 					});

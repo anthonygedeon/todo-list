@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import useInputState from '../hooks/useInputState';
 import { DispatchContext } from '../contexts/project.context';
-import { ADD_PROJECT } from '../constants/actions';
+import { ADD_PROJECT, SELECTED_PROJECT_ACTIVE, LAST_ACTIVE } from '../constants/actions';
 
 const CreateProject = () => {
 	const [value, clearValue, inputChange] = useInputState('');
@@ -31,11 +31,11 @@ const CreateProject = () => {
 
 						clearValue();
 
-						dispatch({ type: 'PROJECT_ACTIVE', isActive: false });
+						dispatch({ type:  SELECTED_PROJECT_ACTIVE, isActive: false });
 
 						dispatch({ type: ADD_PROJECT, projectName: inputValue.current.value });
 
-						dispatch({ type: 'LAST_ACTIVE' });
+						dispatch({ type: LAST_ACTIVE });
 					}
 				}}
 			>

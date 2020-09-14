@@ -4,7 +4,8 @@ import {
 	ADD_TASK,
 	REMOVE_TASK,
 	TOGGLE_TASK,
-	PROJECT_ACTIVE,
+	SELECTED_PROJECT_ACTIVE,
+	LAST_ACTIVE
 } from '../constants/actions';
 import uuid from 'react-uuid';
 
@@ -23,7 +24,7 @@ const reducer = (state, action) => {
 				},
 			];
 
-		case 'LAST_ACTIVE':
+		case LAST_ACTIVE:
 
 			return state.map((project, index) => {
 
@@ -38,7 +39,7 @@ const reducer = (state, action) => {
 
 			});
 
-		case PROJECT_ACTIVE:
+		case SELECTED_PROJECT_ACTIVE:
 			return state.map((project) => {
 				return {
 					...project,

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { DispatchContext } from '../contexts/project.context';
-import { REMOVE_PROJECT } from '../constants/actions';
+import { REMOVE_PROJECT, LAST_ACTIVE } from '../constants/actions';
 
 const DeleteList = () => {
 	const dispatch = useContext(DispatchContext);
@@ -10,7 +10,7 @@ const DeleteList = () => {
 			className="btn delete"
 			onClick={() => {
 				dispatch({ type: REMOVE_PROJECT });
-				dispatch({ type: 'LAST_ACTIVE' })
+				dispatch({ type: LAST_ACTIVE })
 			}}
 		>
 			Delete list
