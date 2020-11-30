@@ -16,14 +16,16 @@ const CreateProject = () => {
 				type="text"
 				className="new list"
 				placeholder="new list name"
-				aria-label="new list name"
+                aria-label="new list name"
+                data-test-id="js-create-project-input"
 				onChange={inputChange}
 				ref={inputValue}
 				value={value}
 			/>
 			<button
 				className="btn create"
-				aria-label="create new list"
+                aria-label="create new list"
+                data-test-id="js-create-project-btn"
 				onClick={(event) => {
 					event.preventDefault();
 

@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preset": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +33,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-playwright-preset": "^1.4.1",
+    "playwright": "^1.6.2"
   }
 }

@@ -7,7 +7,8 @@ const DeleteList = () => {
 
 	return (
 		<button
-			className="btn delete"
+            className="btn delete"
+            data-test-id="js-delete-project"
 			onClick={() => {
 				dispatch({ type: REMOVE_PROJECT });
 				dispatch({ type: LAST_ACTIVE })
